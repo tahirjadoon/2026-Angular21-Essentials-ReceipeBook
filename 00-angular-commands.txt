@@ -1,0 +1,28 @@
+in the package.json we have 
+		"scripts": {
+		"ng": "ng",
+		"start": "ng serve",
+		"build": "ng build",
+		"watch": "ng build --watch --configuration development",
+		"test": "ng test"
+	  }
+	  
+	so we can either run npm commands or the ng commands. The ng commands will run the gloal angular version so there may be some headaches
+	
+	npm install
+	ng serve										→ npm start
+	ng build										→ npm run build
+	ng build --watch --configuration development	→ npm run watch
+	ng test											→ npm test
+	ng generate component xyz						→ npm run ng generate component xyz
+	ng g c xyz										→ npm run ng g c xyz
+	ng												→ npm run ng
+	ng lint 										→ npm run ng lint
+	ng version 										→ npm run ng version
+	ng add @angular/material 						→ npm run ng add @angular/material
+	
+	Which should be used?
+	Use npm scripts, 
+	* always uses the local Angular CLI
+	* No version mismatch
+	* Safe even if uninstall global CLI

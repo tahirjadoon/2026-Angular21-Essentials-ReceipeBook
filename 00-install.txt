@@ -1,0 +1,55 @@
+install nvm
+	https://github.com/coreybutler/nvm-windows
+	if you alread have installed it then upgrade it
+	I installed originally 1.1.12, which stable version currently
+	New version 1.2.2 is available, so will update it 
+	Scroll to the bottom of the page and download nvm-setup.exe
+	
+	>nvm --version
+	1.2.2
+	
+install node.js
+	https://nodejs.org/en/download
+	Install the LTS version, currenlty it is v24.15.0
+
+	After the install or if you have node already installed then use command to check
+	
+	>nvm list
+	  * 22.15.0 (Currently using 64-bit executable)
+		18.17.0
+		
+	Update the node if previous versions are installed 
+		nvm install 24.15.0
+		
+	>nvm list
+	  * 24.15.0 (Currently using 64-bit executable)
+		22.15.0
+		18.17.0
+		
+	>node --version
+		v24.15.0
+
+	>npm --version
+		11.12.1
+		
+	>npx --version
+		11.12.1
+		
+	to use a different version of node
+	>nvm use xx.xx.x
+	
+Installing Angular
+	You dont need to install angular globally
+	You can use npx, provided by the node to setup angular locally but we will do this globally
+	
+	https://angular.dev/installation
+	>npm install -g @angular/cli
+	or a specific version 
+	>npm install -g @angular/cli@17.3.5
+	
+	>ng version
+		Angular CLI       : 21.2.7
+		Node.js           : 24.15.0
+		Package Manager   : npm 11.12.1
+		Operating System  : win32 x64
+	

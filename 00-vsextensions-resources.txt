@@ -1,0 +1,4 @@
+VS Code angular extensions to install 
+	Angular Language Service - Editor services for Angular templates
+	Angular Essentials - John Papa - Essential extensions for Angular developers
+	Material Icon Theme - Philipp Kief - Material Design Icons for Visual Studio Code

@@ -53,3 +53,8 @@ Installing Angular
 		Package Manager   : npm 11.12.1
 		Operating System  : win32 x64
 	
+	deleting
+	>npm uninstall -g @angular/cli
+	>npm cache verify
+	>npm cache clean --force
+	>where ng

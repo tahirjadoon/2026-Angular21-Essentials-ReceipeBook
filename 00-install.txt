@@ -58,3 +58,10 @@ Installing Angular
 	>npm cache verify
 	>npm cache clean --force
 	>where ng
+	
+	if get into node issues or angulat version not displaying full text then
+	>rmdir /s /q C:\nvm4w\nodejs
+	>nvm use 22.15.0
+	>nvm use 22.15.0
+	>npm install -g @angular/cli
+	>ng version

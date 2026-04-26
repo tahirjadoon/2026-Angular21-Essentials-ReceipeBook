@@ -29,9 +29,67 @@ Setting up angular project
 	ng lint 										→ npm run ng lint
 	ng version 										→ npm run ng version
 	ng add @angular/material 						→ npm run ng add @angular/material
+													→ npm run ng g s data/user-data
 	
 	Which should ywe use?
 	Use npm scripts, 
 	* always uses the local Angular CLI
 	* No version mismatch
 	* Safe even if uninstall global CLI
+	
+--------------------------
+
+By default with angular 17+ there is no src/assets folder that used to be there before. 
+There is now pubic folder and this is where the images etc will go. Check angular.json 
+"assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.css"
+            ]
+Now if you want to add your own src/assets, you can do so but add it to the angular.json 
+"assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              }
+            ],
+            "styles": [
+              "src/styles.css"
+            ]
+			
+----------------------------
+
+All components that are built will be stand alone. 
+No NgModule
+Signal based change detection instead of zone.js
+the new /public folder
+Using imports: [] instead of MgModule
+
+If you dont want to setup stand along components then create the app with 
+	ng new my-app --no-standalone
+
+
+A custom toast/snacbars added for displaying the mesagges. 
+	it is in app/common
+		toast-custom
+			add to app.html => <app-toast-custom></app-toast-custom>
+			and then use it as 
+			this.toastMessageService.show(TOAST_MESSAGE_TYPES.success, 'Task completed successfully!');
+
+Data
+	There is local fake data it is in app/data folder along with the interfaces and service to get users, tasks and add/delete tasks. 
+
+Following components are available
+	User	
+	UserTaks
+		UserTask
+		UserNewTask 

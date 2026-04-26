@@ -14,15 +14,26 @@ in the package.json we have
 	ng build										→ npm run build
 	ng build --watch --configuration development	→ npm run watch
 	ng test											→ npm test
-	ng generate component xyz						→ npm run ng generate component xyz
-	ng g c xyz										→ npm run ng g c xyz
 	ng												→ npm run ng
 	ng lint 										→ npm run ng lint
 	ng version 										→ npm run ng version
 	ng add @angular/material 						→ npm run ng add @angular/material
+	
+	ng generate component xyz						→ npm run ng generate component xyz
+	ng g c xyz										→ npm run ng g c xyz
+	ng g s data/user-data							→ npm run ng g s data/user-data
 	
 	Which should be used?
 	Use npm scripts, 
 	* always uses the local Angular CLI
 	* No version mismatch
 	* Safe even if uninstall global CLI
+	
+-------------------
+	*ngFor="let user of users"									@for (user of users; track $index) 
+	*ngIf="selectedUser"										@if(selectedUser)
+	
+	@Input({required: true}) name!: UserData;					user = input.required<UserData>();
+	@Output() selectedUser = new EventEmitter<UserData>();		selectedUser = output<UserData>();
+	
+	

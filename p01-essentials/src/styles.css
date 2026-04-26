@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top left, #181023, #0b0519);
+  color: #c3b3d8;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.error {
+  display: block;
+  margin-top: 4px;
+  padding: 6px 10px;
+
+  color: #d9534f;              
+  background-color: #f9d6d5;   
+  border: 1px solid #d9534f;   
+  border-radius: 6px;          
+
+  font-size: 0.85rem;
+}

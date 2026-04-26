@@ -1,0 +1,17 @@
+<!--app card using ng-content-->
+<app-card>
+
+    <button (click)="onUserClick()" [class.active]="selected()">
+        <!--<img src="assets/users/{{ selectedUser.avatar }}" alt="{{ selectedUser.name }}" />-->
+        <!--<img [src]="'assets/users/' + selectedUser.avatar" [alt]="selectedUser.name" />-->
+        <!--<img [src]="getUserImagePath" [alt]="selectedUser().name" />-->
+        <!--<img [src]="getUserImagePath2()" [alt]="selectedUser().name" />-->
+        <!--<span>{{ selectedUser().name }}</span>-->
+
+
+        <img [src]="getUserImagePath3()" [alt]="user().name" />
+        <span>{{ user().name }}</span>
+        <span class="task-pill">{{ taskCount() }}</span>
+    </button>
+
+</app-card>

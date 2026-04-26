@@ -5,9 +5,10 @@ import { UserTaskDataService } from '../data/services/user-task-data.service';
 
 @Component({
   selector: 'app-user',
-  imports: [Card],
+  //imports: [Card],
   templateUrl: './user.html',
   styleUrl: './user.css',
+  standalone: false,
 })
 export class User {
   private usertaskdataService = inject(UserTaskDataService);

@@ -6,9 +6,10 @@ import { UserTaskDataService } from '../../data/services/user-task-data.service'
 
 @Component({
   selector: 'app-user-task',
-  imports: [DatePipe, Card],
+  //imports: [DatePipe, Card],
   templateUrl: './user-task.html',
   styleUrl: './user-task.css',
+  standalone: false,
 })
 export class UserTask {
   task = input.required<UserTaskData>();

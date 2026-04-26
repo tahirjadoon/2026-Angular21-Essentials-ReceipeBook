@@ -6,9 +6,10 @@ import { UserNewTask } from './user-new-task/user-new-task';
 
 @Component({
   selector: 'app-user-tasks',
-  imports: [UserTask, UserNewTask],
+  //imports: [UserTask, UserNewTask],
   templateUrl: './user-tasks.html',
   styleUrl: './user-tasks.css',
+  standalone: false,
 })
 export class UserTasks {
   user = input.required<UserData>();

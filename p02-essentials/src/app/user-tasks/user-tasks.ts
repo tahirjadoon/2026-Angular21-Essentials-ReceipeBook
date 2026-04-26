@@ -1,9 +1,8 @@
 import { Component, computed, effect, input} from '@angular/core';
 import { UserData } from '../data/modals/user-data.model';
-import { UserTask } from "./user-task/user-task";
-import { UserTaskData } from '../data/modals/user-task-data.mode';
-import { UserNewTask } from "./user-new-task/user-new-task";
 import { UserTaskDataService } from '../data/services/user-task-data.service';
+import { UserTask } from './user-task/user-task';
+import { UserNewTask } from './user-new-task/user-new-task';
 
 @Component({
   selector: 'app-user-tasks',

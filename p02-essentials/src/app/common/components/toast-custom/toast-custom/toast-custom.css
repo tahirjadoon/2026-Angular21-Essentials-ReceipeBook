@@ -1,0 +1,77 @@
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  z-index: 9999;
+}
+
+.toastmessage {
+  position: absolute; /* ← keep this */
+  right: 0;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeIn 0.3s ease-out;
+  min-width: 250px;
+  overflow: hidden; /* keep this */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ICONS (CSS only) */
+.icon {
+  display: inline-block;
+}
+
+.successtc .icon::before { content: "✔️"; }
+.errortc   .icon::before { content: "❌"; }
+.warningtc .icon::before { content: "⚠️"; }
+.infotc    .icon::before { content: "ℹ️"; }
+
+/* Types */
+.successtc { background: #28a745; }
+.errortc   { background: #dc3545; }
+.warningtc { background: #ffc107; color: #333; }
+.infotc    { background: #17a2b8; }
+
+/* PROGRESS BAR — ORIGINAL WORKING VERSION */
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: rgba(255,255,255,0.8);
+  width: 100%;
+  animation: countdown 5s linear forwards;
+}
+
+/* Countdown animation */
+@keyframes countdown {
+  from { width: 100%; }
+  to   { width: 0%; }
+}
+
+.toastmessage.enter {
+  animation: slideUp 0.25s ease-out, fadeIn 0.25s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

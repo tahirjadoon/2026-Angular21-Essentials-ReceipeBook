@@ -1,0 +1,27 @@
+Copied project p01-essentials and renamed it p02-essentials
+
+install
+	npm install @angular/platform-browser-dynamic
+	
+create app.module in the root
+	Add your components to the declartions array
+		you need to make those componenets as NOT stand alone
+		when we make the component stand alone then we will also need to comment out the import array or remove the items from it
+			Any componenet that is being used by the AppComponent needs to be standalone false and added to app.module
+		
+		add AppCompnent to it 
+		and also add bootstrp array by providing the AppCompnent
+		
+		A distinction
+			declartions array is for non stand alone componenets
+			imports array is for the stand alone componenets
+			
+		Also make sure that imports array has 
+			BrowserModule, CommonModule
+		
+Then go to main.ts and remove current bootstraping code. Change it to
+	import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+	import { AppModule } from './app/app.module';
+
+	platformBrowserDynamic().bootstrapModule(AppModule)
+	  .catch(err => console.error(err));

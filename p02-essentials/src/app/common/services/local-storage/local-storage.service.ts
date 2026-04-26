@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { LocalStorageKey } from './local-storage-enum';
-import { ToastMessageService } from '../toast-custom/services/toast-message.service';
-import { ToastMessageType } from '../toast-custom/models/toast-message.model';
+import { ToastMessageService } from '../../components/toast-custom/services/toast-message.service';
+import { ToastMessageType } from '../../components/toast-custom/models/toast-message.model';
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { UserDataService } from './data/services/user-data.service';
-import { UserData } from './data/modals/user-data.model';
+import { UserDataService } from './common/data/services/user-data.service';
+import { UserData } from './common/data/modals/user-data.model';
 
 @Component({
   selector: 'app-root',

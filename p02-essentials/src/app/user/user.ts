@@ -1,7 +1,7 @@
 import { Component, computed, EventEmitter, inject, Input, input, output, Output, signal } from '@angular/core';
-import { UserData } from '../data/modals/user-data.model';
-import { Card } from "../common/card/card";
-import { UserTaskDataService } from '../data/services/user-task-data.service';
+import { UserData } from '../common/data/modals/user-data.model';
+import { Card } from "../common/components/card/card";
+import { UserTaskDataService } from '../common/data/services/user-task-data.service';
 
 @Component({
   selector: 'app-user',

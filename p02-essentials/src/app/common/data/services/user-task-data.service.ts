@@ -2,10 +2,10 @@ import { inject, Injectable, signal } from '@angular/core';
 import { DUMMY_TASKS } from '../repo/dummy-tasks';
 import { UserTaskData } from '../modals/user-task-data.mode';
 import { UserTaskCreateData } from '../modals/user-task-create.model';
-import { ToastMessageType } from '../../common/toast-custom/models/toast-message.model';
-import { ToastMessageService } from '../../common/toast-custom/services/toast-message.service';
-import { LocalStorageService } from '../../common/local-storage/local-storage.service';
-import { LocalStorageKey } from '../../common/local-storage/local-storage-enum';
+import { ToastMessageType } from '../../components/toast-custom/models/toast-message.model';
+import { ToastMessageService } from '../../components/toast-custom/services/toast-message.service';
+import { LocalStorageService } from '../../services/local-storage/local-storage.service';
+import { LocalStorageKey } from '../../services/local-storage/local-storage-enum';
 
 @Injectable({
   providedIn: 'root',

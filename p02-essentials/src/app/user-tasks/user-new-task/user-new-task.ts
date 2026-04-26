@@ -1,7 +1,7 @@
 import { Component, inject, input, output, signal } from '@angular/core';
-import { UserTaskCreateData } from '../../data/modals/user-task-create.model';
+import { UserTaskCreateData } from '../../common/data/modals/user-task-create.model';
 import { FormsModule, NgForm } from '@angular/forms';
-import { UserTaskDataService } from '../../data/services/user-task-data.service';
+import { UserTaskDataService } from '../../common/data/services/user-task-data.service';
 
 @Component({
   selector: 'app-user-new-task',

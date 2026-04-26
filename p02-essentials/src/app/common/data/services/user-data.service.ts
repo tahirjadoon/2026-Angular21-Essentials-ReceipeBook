@@ -1,9 +1,9 @@
 import { inject, Injectable } from "@angular/core";
-import { ToastMessageService } from "../../common/toast-custom/services/toast-message.service";
+import { ToastMessageService } from "../../components/toast-custom/services/toast-message.service";
 import { UserData } from "../modals/user-data.model";
 import { DUMMY_USERS } from "../repo/dummy-users";
-import { LocalStorageService } from "../../common/local-storage/local-storage.service";
-import { LocalStorageKey } from "../../common/local-storage/local-storage-enum";
+import { LocalStorageService } from "../../services/local-storage/local-storage.service";
+import { LocalStorageKey } from "../../services/local-storage/local-storage-enum";
 
 @Injectable({ providedIn: 'root' })
 export class UserDataService {

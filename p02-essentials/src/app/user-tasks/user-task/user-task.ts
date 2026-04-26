@@ -1,8 +1,8 @@
 import { Component, inject, input, output } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { UserTaskData } from '../../data/modals/user-task-data.mode';
-import { Card } from "../../common/card/card";
-import { UserTaskDataService } from '../../data/services/user-task-data.service';
+import { UserTaskData } from '../../common/data/modals/user-task-data.mode';
+import { Card } from "../../common/components/card/card";
+import { UserTaskDataService } from '../../common/data/services/user-task-data.service';
 
 @Component({
   selector: 'app-user-task',

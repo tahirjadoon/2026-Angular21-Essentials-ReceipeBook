@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { InputData } from './input-data.model';
+import { InputData } from '../common/caclculator/input-data.model';
 
 @Component({
   selector: 'app-user-input',

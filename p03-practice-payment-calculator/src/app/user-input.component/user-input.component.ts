@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { InputData } from '../common/caclculator/input-data.model';
 
@@ -12,6 +12,8 @@ import { InputData } from '../common/caclculator/input-data.model';
 export class UserInputComponent {
 
   inputData:InputData = { initialInvestment: 0, annualInvestment: 0, expectedReturnRate: 5, duration: 10 };
+
+  calculate = output<InputData>();
 
   onNumberInput(event: any) {
     let value = event.target.value;
@@ -52,8 +54,7 @@ export class UserInputComponent {
       form.control.markAllAsTouched();
       return;
     }
-
-    console.log(this.inputData);
     
+    this.calculate.emit(this.inputData);
   }
 }

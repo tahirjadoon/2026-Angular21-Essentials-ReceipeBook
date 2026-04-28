@@ -21,8 +21,9 @@ export class App {
   //inputData: InputData = <InputData>{};
 
   //annualData: AnnualData[] = [];
-  annualData = signal<AnnualData[]>([]);
+  //annualData = signal<AnnualData[]>([]);
 
+  /*  
   onCalculateInvestmentResults(inputData: InputData){
     const result = this.calculateInestmentService.calculateInvestmentResults(inputData);
     
@@ -30,4 +31,5 @@ export class App {
     //this.annualData.update(() => result);
     this.annualData.set(result);
   }
+    */
 }

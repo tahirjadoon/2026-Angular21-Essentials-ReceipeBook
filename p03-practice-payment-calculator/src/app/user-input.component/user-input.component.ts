@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, output, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { InputData } from '../common/caclculator/input-data.model';
+import { CalculateInvestmentService } from '../common/caclculator/calculate-investment.service';
 
 @Component({
   selector: 'app-user-input',
@@ -10,13 +11,14 @@ import { InputData } from '../common/caclculator/input-data.model';
   styleUrl: './user-input.component.css',
 })
 export class UserInputComponent {
+  private calculateInvestmentService: CalculateInvestmentService = inject(CalculateInvestmentService);
 
   initialInputData: InputData = { initialInvestment: 0, annualInvestment: 0, expectedReturnRate: 5, duration: 10 };
 
   inputData:InputData = {...this.initialInputData};
   //inputData = signal<InputData>(this.initialInputData);
 
-  calculate = output<InputData>();
+  //calculate = output<InputData>();
 
   onFormSubmit(form: NgForm) {
     if(form.invalid) {
@@ -24,7 +26,8 @@ export class UserInputComponent {
       return;
     }
     
-    this.calculate.emit(this.inputData);
+    // this.calculate.emit(this.inputData);
+    this.calculateInvestmentService.calculateInvestmentResults(this.inputData);
     
     this.inputData = {...this.initialInputData};
     

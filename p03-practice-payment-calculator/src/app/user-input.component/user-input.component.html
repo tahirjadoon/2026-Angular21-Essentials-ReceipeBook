@@ -6,8 +6,7 @@
                 <input type="number" id="initial-investment" name="initial-investment" 
                     #iiCtrl="ngModel" 
                     required  pattern="^-?[0-9]+(\.[0-9]+)?$" 
-                    (input)="onNumberInput($event)"
-                    [(ngModel)]="inputData.initialInvestment" >
+                    [(ngModel)]="inputData.initialInvestment">
                 @if (iiCtrl.invalid && iiCtrl.touched) {
                     <small class="error" *ngIf="iiCtrl.errors?.['required']">Initial Investment is required.</small>
                     <small class="error" *ngIf="iiCtrl.errors?.['pattern']">Please enter a valid number.</small>
@@ -18,8 +17,7 @@
                 <input type="number" id="annual-investment" name="annual-investment" 
                     #aiCtrl="ngModel" 
                     required  pattern="^-?[0-9]+(\.[0-9]+)?$"
-                    (input)="onNumberInput($event)"
-                    [(ngModel)]="inputData.annualInvestment" >
+                    [(ngModel)]="inputData.annualInvestment">
                 @if (aiCtrl.invalid && aiCtrl.touched) {
                     <small class="error" *ngIf="aiCtrl.errors?.['required']">Annual Investment is required.</small>
                     <small class="error" *ngIf="aiCtrl.errors?.['pattern']">Please enter a valid number.</small>
@@ -32,8 +30,7 @@
                 <input type="number" id="expected-return-rate" name="expected-return-rate" 
                     #errCtrl="ngModel" 
                     required  pattern="^-?[0-9]+(\.[0-9]+)?$"
-                    (input)="onNumberInput($event)"
-                    [(ngModel)]="inputData.expectedReturnRate" >
+                    [(ngModel)]="inputData.expectedReturnRate">
                 @if (errCtrl.invalid && errCtrl.touched) {
                     <small class="error" *ngIf="errCtrl.errors?.['required']">Expected Return Rate is required.</small>
                     <small class="error" *ngIf="errCtrl.errors?.['pattern']">Please enter a valid number.</small>
@@ -44,8 +41,7 @@
                 <input type="number" id="duration" name="duration" 
                     #dCtrl="ngModel" 
                     required  pattern="^-?[0-9]+(\.[0-9]+)?$"
-                    (input)="onNumberInput($event)"
-                    [(ngModel)]="inputData.duration" >
+                    [(ngModel)]="inputData.duration">
                 @if (dCtrl.invalid && dCtrl.touched) {
                     <small class="error" *ngIf="dCtrl.errors?.['required']">Duration is required.</small>
                     <small class="error" *ngIf="dCtrl.errors?.['pattern']">Please enter a valid number.</small>
@@ -56,4 +52,4 @@
             <button type="submit">Calculate</button>
         </p>
     </form>
-</div>>
+</div>

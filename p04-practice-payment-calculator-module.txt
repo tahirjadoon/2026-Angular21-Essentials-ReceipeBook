@@ -1,1 +1,15 @@
 Copied p03-practice-payment-calculator as to p04-practice-payment-calculator-module to implement Module approch. 
+
+install
+	npm install @angular/platform-browser-dynamic
+
+
+Added app.module.ts
+Converted all components to standalone=false
+
+Change main.ts
+	import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+	import { AppModule } from './app/app.module';
+
+	platformBrowserDynamic().bootstrapModule(AppModule)
+	  .catch(err => console.error(err));

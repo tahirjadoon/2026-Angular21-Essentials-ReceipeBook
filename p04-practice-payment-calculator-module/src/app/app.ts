@@ -9,9 +9,10 @@ import { InvestmentResultsComponent } from "./investment-results.component/inves
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, UserInputComponent, InvestmentResultsComponent],
+  //imports: [RouterOutlet, HeaderComponent, UserInputComponent, InvestmentResultsComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  standalone: false,
 })
 export class App {
   protected readonly title = signal('p04-practice-payment-calculator-module');

@@ -5,9 +5,10 @@ import { CalculateInvestmentService } from '../common/caclculator/calculate-inve
 
 @Component({
   selector: 'app-investment-results',
-  imports: [CurrencyPipe],
+  //imports: [CurrencyPipe],
   templateUrl: './investment-results.component.html',
   styleUrl: './investment-results.component.css',
+  standalone: false,
 })
 export class InvestmentResultsComponent {
   private calculateInvestmentService: CalculateInvestmentService = inject(CalculateInvestmentService);

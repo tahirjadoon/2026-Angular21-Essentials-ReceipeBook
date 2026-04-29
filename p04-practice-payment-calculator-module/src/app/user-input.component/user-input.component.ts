@@ -6,9 +6,10 @@ import { CalculateInvestmentService } from '../common/caclculator/calculate-inve
 
 @Component({
   selector: 'app-user-input',
-  imports: [FormsModule, CommonModule],
+  //imports: [FormsModule, CommonModule],
   templateUrl: './user-input.component.html',
   styleUrl: './user-input.component.css',
+  standalone: false,
 })
 export class UserInputComponent {
   private calculateInvestmentService: CalculateInvestmentService = inject(CalculateInvestmentService);

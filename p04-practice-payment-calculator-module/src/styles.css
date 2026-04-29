@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: radial-gradient(#303b37, #1a1f1d);
+  color: #e1eeeb;
+  min-height: 100vh;
+}
+
+.center {
+  text-align: center;
+}
+
+.error {
+  display: block;
+  margin-top: 4px;
+  padding: 6px 10px;
+
+  color: #d9534f;              
+  background-color: #f9d6d5;   
+  border: 1px solid #d9534f;   
+  border-radius: 6px;          
+
+  font-size: 0.85rem;
+}

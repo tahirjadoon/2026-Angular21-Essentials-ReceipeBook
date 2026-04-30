@@ -52,4 +52,8 @@ Extending Built-in Elemets with Custom Components via attribute selectors
             Submit 
             <span ngProjectAs="icon">⌲</span>
         </button>
+		
+Reusable form control
+	Check common/form-control 
+	and /dashboard/tickets/new-ticket 
 	

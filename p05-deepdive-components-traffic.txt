@@ -25,3 +25,7 @@ Move then the content from app.html to the respective components.
 	>ticket
 		move the ticket html from app.html to ticketComponenet.html
 		add app-ticket to app.html
+		
+Creating reusable component 
+	follow dashboard/dashboard-item componenet for details
+	check use of ng-content

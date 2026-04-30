@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
+import { ServerStatusComponent } from "./dashboard/server-status/server-status";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent, ServerStatusComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -42,5 +43,5 @@ export class App {
     },
   ];
   maxTraffic = Math.max(...this.dummyTrafficData.map((data) => data.value));
-  currentStatus = 'online';
+  
 }

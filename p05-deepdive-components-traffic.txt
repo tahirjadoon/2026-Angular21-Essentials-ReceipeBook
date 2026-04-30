@@ -15,4 +15,7 @@ Create following components
 Move then the content from app.html to the respective components. 
 	> header
 		move the header html from app.html to headercomponenet.html
-		add app-header tp app.html
+		add app-header to app.html
+	>server-status
+		move the server status html from app.html to serverStatusComponenet.html
+		add app-server-status to app.html

@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { ServerStatusComponent } from "./dashboard/server-status/server-status";
 import { TrafficComponent } from "./dashboard/traffic/traffic";
+import { TicketsComponent } from "./dashboard/tickets/tickets";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, ServerStatusComponent, TrafficComponent],
+  imports: [RouterOutlet, HeaderComponent, ServerStatusComponent, TrafficComponent, TicketsComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

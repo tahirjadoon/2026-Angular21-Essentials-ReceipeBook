@@ -29,3 +29,27 @@ Move then the content from app.html to the respective components.
 Creating reusable component 
 	follow dashboard/dashboard-item componenet for details
 	check use of ng-content
+	
+Extending Built-in Elemets with Custom Components via attribute selectors
+	using attribute, check use of common/button-common ts and html files
+		<span>
+			<ng-content></ng-content>
+		</span>
+		<span class="icon">
+			<ng-content select="icon">
+				↩ <!--fallback icon-->
+			</ng-content>
+		</span>
+		
+	and then its use on header.component.html
+		<button appButton>
+          Logout 
+          <span ngProjectAs="icon">→</span>
+        </button>
+		
+	and /dashboard/tickets/new-ticket 
+		<button appButton>
+            Submit 
+            <span ngProjectAs="icon">⌲</span>
+        </button>
+	

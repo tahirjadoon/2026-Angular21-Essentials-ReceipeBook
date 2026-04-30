@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ButtonCommonComponent } from '../../../common/button-common/button-common';
 
 @Component({
   selector: 'app-new-ticket',
-  imports: [],
+  imports: [ButtonCommonComponent],
   templateUrl: './new-ticket.html',
   styleUrl: './new-ticket.css',
 })

@@ -19,3 +19,9 @@ Move then the content from app.html to the respective components.
 	>server-status
 		move the server status html from app.html to serverStatusComponenet.html
 		add app-server-status to app.html
+	>traffic
+		move the traffic html from app.html to trafficComponenet.html
+		add app-traffic to app.html
+	>ticket
+		move the ticket html from app.html to ticketComponenet.html
+		add app-ticket to app.html

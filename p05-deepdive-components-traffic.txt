@@ -57,3 +57,20 @@ Reusable form control
 	Check common/form-control 
 	and /dashboard/tickets/new-ticket 
 	
+Using :host in the component css
+	Will remove the wrapper divs in the the components and replace the class associated to them i the css file to :host 
+	check following components 
+		dashboard-item
+			removed the div with class .dashboard-item
+			in the css file replace .dashboard-item with :host 
+		
+		server-status
+			removed the div with id status
+			in the css file replace #status with :host 
+		
+		tickets 
+			in the css file replace #tickets with :host 
+			
+		traffic
+			removed the div with id traffic
+			in the css file replace #status with :host 

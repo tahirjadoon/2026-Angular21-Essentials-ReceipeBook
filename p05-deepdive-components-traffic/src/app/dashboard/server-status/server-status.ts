@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnDestroy, OnInit, signal } from '@angular/core';
-import { interval, Observable, Subscription } from 'rxjs';
+import { AfterViewInit, Component, DestroyRef, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-server-status',
@@ -8,26 +8,30 @@ import { interval, Observable, Subscription } from 'rxjs';
   templateUrl: './server-status.html',
   styleUrl: './server-status.css',
 })
-export class ServerStatusComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ServerStatusComponent implements OnInit, AfterViewInit {
   //had to use signal since the project is zoneless
   //subscriptions, interval ad setInterval, settimeout will not result in change detection and view update
   currentStatus = signal<'online' | 'offline' | 'unknown'>('offline');
 
-  private setIntervalId!: number;
-  private intervalSubscription!: Subscription;
+  private setIntervalId?: number;
+  private intervalSubscription?: Subscription;
+  private destroyRef = inject(DestroyRef);
+
 
   constructor() {
     console.log('constructor');
   }
 
+  /*
   ngOnDestroy(): void {
     console.log('ngOnDestroy');
 
     if(this.setIntervalId) clearInterval(this.setIntervalId);
 
-    if(this.intervalSubscription) this.intervalSubscription.unsubscribe();
-
+    this.intervalSubscription?.unsubscribe();
+  
   }
+  */
 
   ngOnInit(): void {
     console.log('ngOnInit');
@@ -66,6 +70,12 @@ export class ServerStatusComponent implements OnInit, OnDestroy, AfterViewInit {
 
       const currentDate = new Date();
       //console.log(`${currentDate.toISOString()} Server status: ${this.currentStatus}`);
+    });
+
+    this.destroyRef.onDestroy(() => {
+      console.log('onDestroy');
+      //if(this.setIntervalId) clearInterval(this.setIntervalId);
+      this.intervalSubscription?.unsubscribe();
     });
   }
 }

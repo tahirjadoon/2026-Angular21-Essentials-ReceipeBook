@@ -6,4 +6,10 @@ VS Code angular extensions to install
 Angular 
 	npm install @angular/cdk
 	
-	
+Angular dev tools = CHROME extensions
+	search for Angular Dev Tools
+		https://chromewebstore.google.com/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh
+		
+Angular dev tools - FireFox extensions
+	search for Angular Dev Tools
+		https://addons.mozilla.org/en-CA/firefox/addon/angular-devtools/

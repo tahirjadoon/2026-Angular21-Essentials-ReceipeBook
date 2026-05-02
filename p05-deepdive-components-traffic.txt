@@ -1,0 +1,76 @@
+This is a new stand alone project. 
+
+>g new p05-deepdive-components-traffic
+√ Which stylesheet system would you like to use? CSS             [ https://developer.mozilla.org/docs/Web/CSS
+          ]
+√ Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? No
+√ Which AI tools do you want to configure with Angular best practices? https://angular.dev/ai/develop-with-ai None
+
+Create following components
+	> header
+	> server-status
+	> traffic
+	> tickets
+	
+Move then the content from app.html to the respective components. 
+	> header
+		move the header html from app.html to headercomponenet.html
+		add app-header to app.html
+	>server-status
+		move the server status html from app.html to serverStatusComponenet.html
+		add app-server-status to app.html
+	>traffic
+		move the traffic html from app.html to trafficComponenet.html
+		add app-traffic to app.html
+	>ticket
+		move the ticket html from app.html to ticketComponenet.html
+		add app-ticket to app.html
+		
+Creating reusable component 
+	follow dashboard/dashboard-item componenet for details
+	check use of ng-content
+	
+Extending Built-in Elemets with Custom Components via attribute selectors
+	using attribute, check use of common/button-common ts and html files
+		<span>
+			<ng-content></ng-content>
+		</span>
+		<span class="icon">
+			<ng-content select="icon">
+				↩ <!--fallback icon-->
+			</ng-content>
+		</span>
+		
+	and then its use on header.component.html
+		<button appButton>
+          Logout 
+          <span ngProjectAs="icon">→</span>
+        </button>
+		
+	and /dashboard/tickets/new-ticket 
+		<button appButton>
+            Submit 
+            <span ngProjectAs="icon">⌲</span>
+        </button>
+		
+Reusable form control
+	Check common/form-control 
+	and /dashboard/tickets/new-ticket 
+	
+Using :host in the component css
+	Will remove the wrapper divs in the the components and replace the class associated to them i the css file to :host 
+	check following components 
+		dashboard-item
+			removed the div with class .dashboard-item
+			in the css file replace .dashboard-item with :host 
+		
+		server-status
+			removed the div with id status
+			in the css file replace #status with :host 
+		
+		tickets 
+			in the css file replace #tickets with :host 
+			
+		traffic
+			removed the div with id traffic
+			in the css file replace #traffic with :host 

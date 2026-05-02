@@ -2,26 +2,22 @@
 # Angular #
 ###########
 
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/.angular/
-/.ng/
+dist/
+out-tsc/
+tmp/
+coverage/
+.angular/
+.ng/
 
 # Angular CLI cache
 .angular/cache/
-
-# Bazel (Angular uses it internally for some tooling)
-bazel-out/
-integration/bazel/bazel-*
 
 ###########
 # Node    #
 ###########
 
-/node_modules/
-/package-lock.json
+node_modules/
+package-lock.json
 yarn.lock
 
 # TypeScript build info
@@ -48,30 +44,13 @@ yarn-error.log*
 # IDE / Editor
 ###########
 
-# VS Code
 .vscode/
 !.vscode/launch.json
 !.vscode/settings.json
 !.vscode/tasks.json
 
-# JetBrains / IntelliJ / WebStorm
 .idea/
 *.iml
-
-# Cloud9
-.c9/
-
-# Devcontainer
-.devcontainer/*
-!.devcontainer/README.md
-!.devcontainer/recommended-devcontainer.json
-!.devcontainer/recommended-Dockerfile
-
-# Vim
-*.swo
-*.swp
-.vimrc
-.nvimrc
 
 ###########
 # OS Files
@@ -84,27 +63,5 @@ Thumbs.db
 # Misc
 ###########
 
-# Secret files
 *secret.js
-
-# Build analytics
 .build-analytics
-
-# Rollup test output
-modules/rollup-test/dist/
-
-# User-specific Bazel settings
-.bazelrc.user
-
-# User-specific ng-dev settings
-.ng-dev.user*
-
-# Local history (VSCode extension)
-.history
-
-# Notes
-.notes.md
-baseline.json
-
-# Husky
-.husky/_

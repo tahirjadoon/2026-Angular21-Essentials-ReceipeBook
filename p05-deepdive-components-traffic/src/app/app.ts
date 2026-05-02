@@ -10,7 +10,7 @@ import { DashboardItemComponent } from "./dashboard/dashboard-item/dashboard-ite
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, ServerStatusComponent, TrafficComponent, TicketsComponent, DashboardItemComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('p05-deepdive-components-traffic');

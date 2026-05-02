@@ -73,4 +73,4 @@ Using :host in the component css
 			
 		traffic
 			removed the div with id traffic
-			in the css file replace #status with :host 
+			in the css file replace #traffic with :host 

@@ -16,3 +16,16 @@
   font-size: 0.9rem;
   color: #4f4b53;
 }
+
+.control .error {
+  display: block;
+  margin-top: 4px;
+  padding: 6px 10px;
+
+  color: #d9534f;              
+  background-color: #f9d6d5;   
+  border: 1px solid #d9534f;   
+  border-radius: 6px;          
+
+  font-size: 0.85rem;
+}

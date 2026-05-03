@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
@@ -12,11 +12,17 @@ import { FormControlComponent } from '../../../common/form-control/form-control'
   templateUrl: './new-ticket.html',
   styleUrl: './new-ticket.css',
 })
-export class NewTicketComponent {
-
-  //@ViewChild('ticketForm') private ticketForm?: ElementRef<HTMLFormElement>;
+export class NewTicketComponent implements OnInit, AfterViewInit {
+    //@ViewChild('ticketForm') private ticketForm?: ElementRef<HTMLFormElement>;
   private ticketFormSignal = viewChild.required<ElementRef<HTMLFormElement>>('ticketForm');
 
+  ngOnInit(): void {
+    console.log('on init: not guaranteed the template has been initialized');
+  }
+
+  ngAfterViewInit(): void {
+    console.log('After view init: guaranteed the template has been initialized');
+  }
 
   onFormSubmit(form: HTMLFormElement, titleElem: HTMLInputElement, requestElem: HTMLTextAreaElement){
     console.log('form submit', titleElem.value, requestElem.value);

@@ -1,15 +1,22 @@
-<form>
+<!--<form #ticketForm (ngSubmit)="onFormSubmit(ticketForm, titleCtrl, requestCtrl)" novalidate>-->
+<form #ticketForm (ngSubmit)="onFormSubmit2(titleCtrl, requestCtrl)">
     <app-form-control class="control" label="Title">
-        <input name="title" id="title" />
+        <input id="title" name="title" #titleCtrl #input />
+        <!--<small class="error" *ngIf="titleCtrl.invalid && titleCtrl.touched">
+            Title is required.
+        </small>-->
     </app-form-control>
 
     <app-form-control class="control" label="Request">
-        <textarea name="request" id="request" rows="3"></textarea>
+        <textarea id="request" name="request" #requestCtrl rows="3" #input></textarea>
+        <!--<small class="error" *ngIf="requestCtrl.invalid && requestCtrl.touched">
+            Request is required.
+        </small>-->
     </app-form-control>
 
     <p>
-        <button appButton>
-            Submit 
+        <button appButton type="submit">
+            Submit
             <span ngProjectAs="icon">⌲</span>
         </button>
     </p>

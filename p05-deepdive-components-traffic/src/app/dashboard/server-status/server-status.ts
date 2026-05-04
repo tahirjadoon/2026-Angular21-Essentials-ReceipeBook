@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, DestroyRef, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { AfterViewInit, Component, DestroyRef, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
@@ -20,6 +20,11 @@ export class ServerStatusComponent implements OnInit, AfterViewInit {
 
   constructor() {
     console.log('constructor');
+    //angular will setup a subecription to currentStatus signal
+    effect(() => {
+      console.log(this.currentStatus()); 
+    });
+    
   }
 
   /*

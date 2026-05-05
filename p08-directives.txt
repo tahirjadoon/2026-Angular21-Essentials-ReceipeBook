@@ -1,0 +1,4 @@
+A new project setup
+
+>ng new p08-directives
+

@@ -41,6 +41,14 @@ export class AuthService {
     this._activePermission.set(permission);
   }
 
+  hasPermission(permission: Permission){
+    return this._activePermission() === permission;
+  }
+
+  isAdmin = () => this._activePermission() === PERMISSION_TYPES.admin;
+  isUser = () => this._activePermission() === PERMISSION_TYPES.user;
+  isGuest = () => this._activePermission() === PERMISSION_TYPES.guest;
+
   logout(){
     this._activePermission.set(PERMISSION_TYPES.guest);
   }

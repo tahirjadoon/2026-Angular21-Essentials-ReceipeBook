@@ -10,10 +10,12 @@
     <p>Only admins should see this!</p>
   } -->
   <!-- we are not passing string, so need to use property binding  -->
-   <ng-template [appAuth]="permissionTypes.admin">
+   <!-- <ng-template [appAuth]="permissionTypes.admin">
     <p>Only admins should see this!</p>
-   </ng-template>
-  
+   </ng-template> -->
+   <p *appAuth="permissionTypes.admin" class="protected-content admin">Only admins should see this!</p>
+   <p *appAuth="permissionTypes.user" class="protected-content unauthenticated">Only users should see this!</p>
+   <p *appAuth="permissionTypes.guest" class="protected-content authenticated">Only guests should see this!</p>
 
   <hr />
   <p>

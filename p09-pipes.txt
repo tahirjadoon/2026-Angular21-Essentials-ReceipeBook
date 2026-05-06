@@ -1,0 +1,3 @@
+A new project setup
+
+>ng new p09-pipes

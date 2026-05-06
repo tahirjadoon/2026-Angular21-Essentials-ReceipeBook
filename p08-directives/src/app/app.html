@@ -13,9 +13,9 @@
    <!-- <ng-template [appAuth]="permissionTypes.admin">
     <p>Only admins should see this!</p>
    </ng-template> -->
-   <p *appAuth="permissionTypes.admin" class="protected-content admin">Only admins should see this!</p>
-   <p *appAuth="permissionTypes.user" class="protected-content unauthenticated">Only users should see this!</p>
-   <p *appAuth="permissionTypes.guest" class="protected-content authenticated">Only guests should see this!</p>
+   <p *appAuth="permissionTypes.admin" appLog class="protected-content admin">Only admins should see this!</p>
+   <p *appAuth="permissionTypes.user" appLog class="protected-content unauthenticated">Only users should see this!</p>
+   <p *appAuth="permissionTypes.guest" appLog class="protected-content authenticated">Only guests should see this!</p>
 
   <hr />
   <p>

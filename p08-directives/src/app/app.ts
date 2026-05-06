@@ -6,11 +6,12 @@ import { AuthComponent } from "./auth/auth.component";
 import { AuthService } from './auth/services/auth.service';
 import { AuthDirective } from "./directives/auth.directive";
 import { PERMISSION_TYPES } from './auth/models/auth.model';
+import { LogDirective } from './directives/log.directive';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgIf, LearningResourcesComponent, AuthComponent, AuthDirective],
+  imports: [RouterOutlet, NgIf, LearningResourcesComponent, AuthComponent, AuthDirective, LogDirective],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

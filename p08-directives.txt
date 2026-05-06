@@ -1,0 +1,11 @@
+A new project setup
+
+>ng new p08-directives
+
+Directives are "enhancements" for elements
+Extra behaviors or settings could be added to those elements. 
+Directives have no template
+
+Attribute directive: Built in attribute like ngModel
+Structural directives: like *ngIf, *ngFor
+	in modern angular no more structural directives, use @if, @for

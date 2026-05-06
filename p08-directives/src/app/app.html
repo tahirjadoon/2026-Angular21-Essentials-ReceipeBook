@@ -6,9 +6,14 @@
   <app-auth></app-auth>
 
   <!-- <p *ngIf="isAdmin()">Only admins should see this!</p> -->
-  @if (isAdmin()) {
+  <!-- @if (isAdmin()) {
     <p>Only admins should see this!</p>
-  }
+  } -->
+  <!-- we are not passing string, so need to use property binding  -->
+   <ng-template [appAuth]="permissionTypes.admin">
+    <p>Only admins should see this!</p>
+   </ng-template>
+  
 
   <hr />
   <p>

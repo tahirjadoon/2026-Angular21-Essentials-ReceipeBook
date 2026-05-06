@@ -19,8 +19,11 @@ export class SafeLinkDirective {
       const wantsToLeave = window.confirm('Are you sure you want to leave this page?');
       
       //user selected to leave the site
-      if(wantsToLeave) 
+      if(wantsToLeave){
+        const address = (event.target as HTMLAnchorElement).href;
+        (event.target as HTMLAnchorElement).href = address + '?from=myapp';
         return;
+      }
       
       //user stays
       event.preventDefault();

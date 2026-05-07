@@ -1,15 +1,19 @@
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TemperaturePipe } from './pipes/temperature.pipe';
+import { TEMP_UNITS } from './models/temperature.model';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, DatePipe, DecimalPipe],
+  imports: [RouterOutlet, DatePipe, DecimalPipe, TemperaturePipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('p09-pipes');
+
+  tempUnits = TEMP_UNITS;
 
   currentDate = new Date();
   currentTemperaturs = {

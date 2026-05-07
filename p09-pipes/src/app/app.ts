@@ -1,9 +1,10 @@
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, DatePipe, DecimalPipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -25,5 +26,5 @@ export class App {
   onReset(index: number) {
     this.historicTemperatures[index] = 18;
   }
-  
+
 }

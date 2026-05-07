@@ -3,10 +3,12 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TemperaturePipe } from './pipes/temperature.pipe';
 import { TEMP_UNITS } from './models/temperature.model';
+import { SortArrayPipe } from './pipes/sort-array.pipe';
+import { SORT_ORDER } from './models/sortOrder.model';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, DatePipe, DecimalPipe, TemperaturePipe],
+  imports: [RouterOutlet, DatePipe, DecimalPipe, TemperaturePipe, SortArrayPipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -14,6 +16,8 @@ export class App {
   protected readonly title = signal('p09-pipes');
 
   tempUnits = TEMP_UNITS;
+  sortOrder = SORT_ORDER;
+
 
   currentDate = new Date();
   currentTemperaturs = {
@@ -28,7 +32,11 @@ export class App {
   ];
 
   onReset(index: number) {
-    this.historicTemperatures[index] = 18;
+    //since we have a sort pipe applied, we need to change the array as a whole or the click result will not be updated
+    // this.historicTemperatures[index] = 18;
+    const newTemps = [...this.historicTemperatures];
+    newTemps[index] = 18;
+    this.historicTemperatures = newTemps;
   }
 
 }

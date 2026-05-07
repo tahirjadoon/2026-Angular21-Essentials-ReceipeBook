@@ -33,10 +33,12 @@ export class App {
 
   onReset(index: number) {
     //since we have a sort pipe applied, we need to change the array as a whole or the click result will not be updated
-    // this.historicTemperatures[index] = 18;
-    const newTemps = [...this.historicTemperatures];
-    newTemps[index] = 18;
-    this.historicTemperatures = newTemps;
+    this.historicTemperatures[index] = 18;
+
+    //applied pure=false to the pipe so above will not work again
+    // const newTemps = [...this.historicTemperatures];
+    // newTemps[index] = 18;
+    // this.historicTemperatures = newTemps;
   }
 
 }

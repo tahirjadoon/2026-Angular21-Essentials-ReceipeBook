@@ -3,6 +3,7 @@ import { SORT_ORDER, SortOrder } from "../models/sortOrder.model";
 
 @Pipe({
   name: 'sortArray',
+  pure: false, //to disable caching mechanism
 })
 export class SortArrayPipe implements PipeTransform{
 

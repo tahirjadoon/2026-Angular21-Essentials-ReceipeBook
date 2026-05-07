@@ -1,0 +1,30 @@
+<main>
+  <article class="temperatures">
+    <header>
+      <img src="temp-icon.png" alt="Thermometer icon" />
+      <div>
+        <h2>Current Temperatures</h2>
+        <p>{{ currentDate | date: 'medium'}}</p>
+      </div>
+    </header>
+    <p>New York: {{ currentTemperaturs.newYork | temperature:tempUnits.cel:tempUnits.far }}</p>
+    <p>Berlin: {{ currentTemperaturs.berlin | temperature:tempUnits.cel }}</p>
+    <p>Paris: {{ currentTemperaturs.paris | temperature:tempUnits.far:tempUnits.cel }}</p>
+    <p>Chicago: {{ currentTemperaturs.chicago | temperature:tempUnits.far }}</p>
+  </article>
+
+  <article class="temperatures">
+    <header>
+      <img src="temp-icon.png" alt="Thermometer icon" />
+      <div>
+        <h2>Historic Temperatures</h2>
+        <p>Berlin</p>
+      </div>
+    </header>
+    <ul>
+      @for (temperature of historicTemperatures | sortArray: sortOrder.asc; track $index) {
+      <li (click)="onReset($index)">{{ temperature  | temperature:tempUnits.cel }}</li>
+      }
+    </ul>
+  </article>
+</main>

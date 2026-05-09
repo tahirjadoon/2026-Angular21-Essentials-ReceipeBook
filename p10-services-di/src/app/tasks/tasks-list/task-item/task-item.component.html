@@ -10,7 +10,7 @@
     <p>{{ taskStatus() }}</p>
   </header>
   <p>{{ task().description }}</p>
-  <form (ngSubmit)="onChangeTaskStatus(task().id, status.value)">
+  <form (ngSubmit)="onChangeTaskStatus(task().id, status.value)" #form="ngForm" #formEl>
     <select #status>
       @for (opt of statusOptions; track opt.value) {
         <option 
@@ -21,7 +21,7 @@
       }
     </select>
     <p>
-      <button>Change Status</button>
+      <button type="submit">Change Status</button>
     </p>
   </form>
 </article>

@@ -40,3 +40,8 @@ export interface Task {
   status: TaskStatus;
 }
 
+export interface TaskInput{
+  title: string,
+  description: string
+}
+

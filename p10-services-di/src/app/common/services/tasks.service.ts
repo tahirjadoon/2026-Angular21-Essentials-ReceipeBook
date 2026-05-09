@@ -5,14 +5,14 @@ import { Task, TASK_STATUS, TaskInput, TaskStatus } from "../model/task.model";
 export class TasksService{
 
   private _tasks = signal<Task[]>([]);
-  tasks = this._tasks.asReadonly();
+  private tasks = this._tasks.asReadonly();
 
   getTasks(){
-    return this._tasks();
+    return this.tasks(); //readonly returned
   }
 
   getTask(taskId: string){
-    return this._tasks().find(t => t.id === taskId);
+    return this.tasks().find(t => t.id === taskId); //read only returned
   }
 
   addTask(taskData: TaskInput){

@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { Task, TASK_STATUS, TASK_STATUS_FALLBACK_LABEL, TASK_STATUS_LABELS, TASK_STATUS_OPTIONS, TaskStatus } from '../../../model/task.model';
+import { Task, TASK_STATUS, TASK_STATUS_FALLBACK_LABEL, TASK_STATUS_LABELS, TASK_STATUS_OPTIONS, TaskStatus } from '../../../common/model/task.model';
 
 @Component({
   selector: 'app-task-item',

@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { TASK_STATUS_OPTIONS } from '../../model/task.model';
+import { TASK_STATUS_OPTIONS } from '../../common/model/task.model';
 import { TaskItemComponent } from './task-item/task-item.component';
 
 @Component({

@@ -1,0 +1,3 @@
+Created new project 
+
+>ng new p12-rxjs-observables

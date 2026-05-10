@@ -4,5 +4,6 @@
 <p>Interval Value: {{ interval }} - {{ interval$ | async}}</p>
 
 <p>
-  <button>Click</button>
+  <button (click)="onclick()">Click</button>
 </p>
+<p>Click Count: {{ clickCount() }}</p>

@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectorRef, Component, DestroyRef, inject, NgZone, OnInit, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, DestroyRef, effect, inject, NgZone, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { interval, map, Observable } from 'rxjs';
 
@@ -15,10 +15,16 @@ export class App implements OnInit {
 
   interval = 0; //non signal solution
   interval$!: Observable<number>; //observable solution
+  clickCount = signal(0);
 
   private destroyRef = inject(DestroyRef);
 
-  constructor(private zone: NgZone, private cdref: ChangeDetectorRef) {}
+  constructor(private zone: NgZone, private cdref: ChangeDetectorRef) {
+
+    effect(() => {
+      console.log(`Clicked button ${this.clickCount()} times`);
+    });
+  }
 
   ngOnInit(): void {
     
@@ -51,5 +57,9 @@ export class App implements OnInit {
 
 
     this.interval$ = interval(1000); //no need to unsubscribe, as the async pipe will handle it.
+  }
+
+  onclick() {
+    this.clickCount.update(value => value + 1);
   }
 }

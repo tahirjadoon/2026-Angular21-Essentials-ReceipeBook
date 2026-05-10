@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ToastMessageService } from '../../services/toast-message.service';
 
 @Component({
@@ -8,6 +8,10 @@ import { ToastMessageService } from '../../services/toast-message.service';
   styleUrl: './toast-custom.css',
 })
 export class ToastCustom {
-  constructor(public toastMessageService: ToastMessageService) {}
+  displayNumber = signal(true);
 
+  constructor(public toastMessageService: ToastMessageService) {
+    // Service sets this to true by default
+    this.toastMessageService.setDisplayNumber(true);
+  }
 }

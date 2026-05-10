@@ -7,8 +7,18 @@ export class ToastMessageService {
   private counter = 0;
   private toastHostCreated = false;
   toastmessages = signal<ToastMessage[]>([]);
+  exitingIds = signal<Set<number>>(new Set());
+  private displayNumber = signal(true);
 
   constructor(private injector: Injector, private appRef: ApplicationRef) {}
+
+  setDisplayNumber(value: boolean) {
+    this.displayNumber.set(value);
+  }
+
+  getDisplayNumber() {
+    return this.displayNumber();
+  }
 
   success(text: string) {
     this.show(TOAST_MESSAGE_TYPE.Success, text);
@@ -57,6 +67,16 @@ export class ToastMessageService {
   }
 
   private removeToast(id: number) {
-    this.toastmessages.update(list => list.filter(t => t.id !== id));
+    // Mark as exiting to trigger exit animation
+    this.exitingIds.update(ids => new Set([...ids, id]));
+    
+    // Wait for animation to complete (300ms) then remove from DOM
+    setTimeout(() => {
+      this.toastmessages.update(list => list.filter(t => t.id !== id));
+      this.exitingIds.update(ids => {
+        ids.delete(id);
+        return new Set(ids);
+      });
+    }, 300);
   }
 }

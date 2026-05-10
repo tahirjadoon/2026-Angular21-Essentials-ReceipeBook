@@ -7,7 +7,7 @@
 }
 
 .toastmessage {
-  position: absolute; /* ← keep this */
+  position: absolute;
   right: 0;
   width: 100%;
   padding: 1rem 1.5rem;
@@ -17,20 +17,86 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  animation: fadeIn 0.3s ease-out;
   min-width: 250px;
-  overflow: hidden; /* keep this */
+  overflow: hidden;
+  transition: all 0.3s ease-out;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Badge styles */
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  align-self: center;
+  color: white;
+}
+
+.badge.successtc {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.badge.errortc {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.badge.warningtc {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.badge.infotc {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.text {
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Enter animation */
+.toastmessage.enter {
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Exit animation */
+.toastmessage.exit {
+  animation: slideDown 0.3s ease-in forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
 }
 
 /* ICONS (CSS only) */
 .icon {
   display: inline-block;
+  font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
 .successtc .icon::before { content: "✔️"; }
@@ -44,7 +110,7 @@
 .warningtc { background: #ffc107; color: #333; }
 .infotc    { background: #17a2b8; }
 
-/* PROGRESS BAR — ORIGINAL WORKING VERSION */
+/* PROGRESS BAR */
 .progress-bar {
   position: absolute;
   bottom: 0;
@@ -59,19 +125,4 @@
 @keyframes countdown {
   from { width: 100%; }
   to   { width: 0%; }
-}
-
-.toastmessage.enter {
-  animation: slideUp 0.25s ease-out, fadeIn 0.25s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }

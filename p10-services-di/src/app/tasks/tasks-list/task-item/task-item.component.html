@@ -10,18 +10,21 @@
     <p>{{ taskStatus() }}</p>
   </header>
   <p>{{ task().description }}</p>
-  <form (ngSubmit)="onChangeTaskStatus(task().id, status.value)" #form="ngForm" #formEl>
-    <select #status>
+  <form (ngSubmit)="onChangeTaskStatus(task().id)" #form="ngForm">
+    <select (ngModelChange)="onStatusChange($event)" [ngModel]="selectedStatus()" name="status">
       @for (opt of statusOptions; track opt.value) {
-        <option 
-          [value]="opt.value" 
-          [selected]="task().status === opt.value">
+        <option [value]="opt.value">
           {{ opt.label }}
         </option>
       }
     </select>
     <p>
-      <button type="submit">Change Status</button>
+      <button type="submit" 
+              [disabled]="isStatusDisabled()" 
+              [ngStyle]="{ 'background-color': selectedStatusColor() }" 
+              class="status-button">
+        Change Status
+      </button>
     </p>
   </form>
 </article>

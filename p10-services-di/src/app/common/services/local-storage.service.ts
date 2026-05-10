@@ -1,7 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ToastMessageService } from './toast-message.service';
 import { LocalStorageKey } from '../model/local-storage-enum';
-import { TOAST_MESSAGE_TYPE } from '../model/toast-message.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +21,7 @@ export class LocalStorageService {
     try {
       return JSON.parse(raw) as T;
     } catch {
-      this.toastMessageService.show(TOAST_MESSAGE_TYPE.Error, `Error occurred while parsing local storage for key: ${key}`);
+      this.toastMessageService.error(`Error occurred while parsing local storage for key: ${key}`);
       return null;
     }
   }
@@ -47,7 +46,7 @@ export class LocalStorageService {
     try {
       return JSON.parse(raw) as T;
     } catch {
-      this.toastMessageService.show(TOAST_MESSAGE_TYPE.Error, `Error occurred while parsing session storage for key: ${key}`);
+      this.toastMessageService.error(`Error occurred while parsing session storage for key: ${key}`);
       return null;
     }
   }

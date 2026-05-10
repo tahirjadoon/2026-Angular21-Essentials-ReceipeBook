@@ -3,7 +3,7 @@ import { ToastMessageService } from '../../services/toast-message.service';
 
 @Component({
   selector: 'app-toast-custom',
-  //imports: [],
+  standalone: true,
   templateUrl: './toast-custom.html',
   styleUrl: './toast-custom.css',
 })

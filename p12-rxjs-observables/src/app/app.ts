@@ -1,7 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectorRef, Component, DestroyRef, inject, NgZone, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { interval, Observable } from 'rxjs';
+import { interval, map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,9 @@ export class App implements OnInit {
   ngOnInit(): void {
     
     //rxjs interval, defined in miliseconds
-    const intervalSubscription = interval(1000).subscribe({
+    const intervalSubscription = interval(1000).pipe(
+      map(value => value * 2)
+    ).subscribe({
       next: (value) => {
         /*
         this.zone.run(() => {

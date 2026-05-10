@@ -1,0 +1,30 @@
+<article
+  [class]="{
+    'status-open': task().status === taskStatusConst.open,
+    'status-in-progress': task().status === taskStatusConst.inprogress,
+    'status-done': task().status === taskStatusConst.done
+  }"
+>
+  <header>
+    <h3>{{ task().title }}</h3>
+    <p>{{ taskStatus() }}</p>
+  </header>
+  <p>{{ task().description }}</p>
+  <form (ngSubmit)="onChangeTaskStatus(task().id)" #form="ngForm">
+    <select (ngModelChange)="onStatusChange($event)" [ngModel]="selectedStatus()" name="status">
+      @for (opt of statusOptions; track opt.value) {
+        <option [value]="opt.value">
+          {{ opt.label }}
+        </option>
+      }
+    </select>
+    <p>
+      <button type="submit" 
+              [disabled]="isStatusDisabled()" 
+              [ngStyle]="{ 'background-color': selectedStatusColor() }" 
+              class="status-button">
+        Change Status
+      </button>
+    </p>
+  </form>
+</article>

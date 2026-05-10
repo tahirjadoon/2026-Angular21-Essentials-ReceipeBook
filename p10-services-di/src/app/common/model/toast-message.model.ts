@@ -1,4 +1,4 @@
-export enum ToastMessageType {
+export enum TOAST_MESSAGE_TYPE {
   Success = 'successtc',
   Error = 'errortc',
   Warning = 'warningtc',
@@ -7,6 +7,6 @@ export enum ToastMessageType {
 
 export interface ToastMessage {
   id: number;
-  type: ToastMessageType;
+  type: TOAST_MESSAGE_TYPE;
   text: string;
 }

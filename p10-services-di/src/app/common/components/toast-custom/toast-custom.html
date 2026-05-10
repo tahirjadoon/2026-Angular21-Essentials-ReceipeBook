@@ -1,10 +1,10 @@
-@let list = toastMessageService.toastmessages();
+
 
 <div class="toast-container">
-  @for (toast of list; track toast.id; let i = $index) {
+  @for (toast of toastMessageService.toastmessages(); track toast.id; let i = $index) {
     <div class="toastmessage enter"
          [class]="toast.type"
-         [style.bottom.px]="(list.length - 1 - i) * 70">
+         [style.bottom.px]="(toastMessageService.toastmessages().length - 1 - i) * 70">
       <span class="icon"></span>
       <span class="text">{{ toast.text }}</span>
       <div class="progress-bar"></div>

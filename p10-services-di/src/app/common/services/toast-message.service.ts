@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { ToastMessage, ToastMessageType } from '../model/toast-message.model';
+import { TOAST_MESSAGE_TYPE, ToastMessage } from '../model/toast-message.model';
 
 @Injectable({ providedIn: 'root' })
 export class ToastMessageService {
@@ -7,7 +7,7 @@ export class ToastMessageService {
   //toastmessage = signal<ToastMessage | null>(null);
   toastmessages = signal<ToastMessage[]>([]);
 
-  show(type: ToastMessageType, text: string) {
+  show(type: TOAST_MESSAGE_TYPE, text: string) {
 
     const toast: ToastMessage = {
       id: ++this.counter,

@@ -1,0 +1,47 @@
+New project setup with 
+ng new p13-http-req-resp
+
+Project sructure
+> backend
+	> data
+		> places.json
+		> user-places.json 
+	> images
+		contains usr places 
+	> app.js
+	> package.json 
+	
+> src
+	> app 
+		> commom
+			> components
+				> toast-custom
+					contains css, html and ts files
+			> model
+				> local-storage-enum.ts
+				> toast-message.model.ts
+			> servies 
+				> local-storage.service.ts
+				> toast-message.service.ts
+		> places 
+			> components
+				> available-places
+					<app-places-container title="Available Places">
+					  <app-places [places]="places()!" />
+					</app-places-container>
+				> places-container
+				> places
+				> user-places	
+					<app-places-container title="Your Favorite Places">
+					  <p>Todo...</p>
+					</app-places-container>
+			> models
+				> places-model.ts
+			> services
+				> places.service.ts
+		> app.css
+		> app.html
+			<app-available-places />
+			<app-user-places />
+		> app.ts 
+		

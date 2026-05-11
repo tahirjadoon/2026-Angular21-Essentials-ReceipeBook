@@ -1,0 +1,9 @@
+Created new project 
+
+>ng new p12-rxjs-observables
+
+Observable is a stream of data
+	RxJs observables amit values over time
+	can setup subscriptions to handle them
+	
+	

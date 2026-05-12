@@ -48,4 +48,27 @@ export class AvailablePlacesComponent implements OnInit {
 
   }
 
+  onSelectPlace(selectedPlace: Place) {
+    //put is looking for a body param.
+    this.httpClient.put<{ userPlaces: Place[] }>(`${this.baseApiUrl}/user-places`, { placeId: selectedPlace.id })
+    .pipe(
+      map((resData) => resData.userPlaces),
+      catchError((error) => {
+        console.error(error.message);
+        return throwError(() => new Error('Something went wrong while adding place. Please try again later.'));
+      })
+    )
+    .subscribe({
+      next: (userPlaces: Place[]) => {
+        console.log(userPlaces);
+      },
+      error: (error: Error) => {
+        this.error.set(error.message);
+      },
+      complete: () => {
+        this.error.set('');
+      }
+    });
+  }
+
 }

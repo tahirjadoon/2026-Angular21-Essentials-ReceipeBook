@@ -1,6 +1,25 @@
 New project setup with 
 ng new p13-http-req-resp
 
+This project is combination of node express project and angular project. 
+
+backend => node express project
+	How to run the backend 
+	> npm install
+	> npm start
+	Do CTRL+C to stop it
+	
+src => angular project 
+	Setting up httpClient in angular app
+		Angular 21 or when using app/app.config.ts 
+			add provideHttpClient() to providers array
+		When not using app/app.config.ts then go to main.ts and provide it there 
+			bootstrapApplication(AppComponent, {
+			  providers: [
+				provideHttpClient()
+			  ]
+			});
+					
 Project sructure
 > backend
 	> data

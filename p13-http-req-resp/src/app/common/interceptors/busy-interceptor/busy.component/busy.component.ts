@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BusyService } from '../../services/busy.service';
+import { BusyService } from '../busy.service';
 
 @Component({
   selector: 'app-busy',

@@ -7,7 +7,7 @@ import {
   EnvironmentInjector,
   ApplicationRef,
 } from '@angular/core';
-import { BusyComponent } from '../components/busy/busy.component';
+import { BusyComponent } from './busy.component/busy.component';
 
 @Injectable({ providedIn: 'root' })
 export class BusyService {

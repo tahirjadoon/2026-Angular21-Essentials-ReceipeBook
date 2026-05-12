@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { busyInterceptor } from './common/interceptors/busy-interceptor';
+import { busyInterceptor } from './common/interceptors/busy-interceptor/busy-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

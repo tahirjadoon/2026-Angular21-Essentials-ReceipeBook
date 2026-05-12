@@ -19,15 +19,12 @@ export class AvailablePlacesComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
   private baseApiUrl: string = this.placesService.baseApiUrl;
   
-  isFetching = signal(false);
   error = signal<string>('');
   places = signal<Place[] | undefined>(undefined);
 
   hasPlaces = computed(() => this.places() && this.places()!.length > 0);
 
   ngOnInit(): void {
-    this.isFetching.set(true);
-
     const getPlacesSubscription = this.httpClient.get<{ places: Place[] }>(`${this.baseApiUrl}/places`)
     .pipe(
       map((resData) => resData.places), 
@@ -41,12 +38,8 @@ export class AvailablePlacesComponent implements OnInit {
         this.places.set(places);
       },
       error: (error: Error) => {
-        this.isFetching.set(false);
         this.error.set(error.message);
       },
-      complete: () => {
-        this.isFetching.set(false);
-      }
     });
 
     this.destroyRef.onDestroy(() => {

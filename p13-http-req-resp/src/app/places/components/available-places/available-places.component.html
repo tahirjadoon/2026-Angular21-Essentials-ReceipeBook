@@ -1,18 +1,11 @@
 <app-places-container title="Available Places">
-  @if(isFetching()){
-    <div class="loading-wrapper">
-      <div class="spinner"></div>
-      <p class="fallback-text pulsate">Loading places...</p>
-    </div>
-  }
-
   @if(error()){
     <p class="error-text">{{ error() }}</p>
   }
 
   @if (hasPlaces()) {
     <app-places [places]="places()!" />
-  } @else  {
+  } @else if (places() !== undefined) {
     <p class="fallback-text">Unfortunately, no places could be found.</p>
   }
 </app-places-container>

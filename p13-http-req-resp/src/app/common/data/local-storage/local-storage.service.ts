@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { ToastMessageService } from '../toast-message/toast-message.service';
-import { LocalStorageKey } from '../model/local-storage-enum';
+import { ToastMessageService } from '../../toast-message/toast-message.service';
+import { LocalStorageKey } from './local-storage-enum';
 
 @Injectable({
   providedIn: 'root',

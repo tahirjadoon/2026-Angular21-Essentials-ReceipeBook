@@ -1,6 +1,6 @@
 import { Injectable, signal, Injector, createComponent, EnvironmentInjector, ApplicationRef } from '@angular/core';
-import { TOAST_MESSAGE_TYPE, ToastMessage } from '../model/toast-message.model';
-import { ToastCustom } from '../components/toast-custom/toast-custom';
+import { TOAST_MESSAGE_TYPE, ToastMessage } from './toast-message.model';
+import { ToastCustom } from './toast-custom.component/toast-custom.component';
 
 @Injectable({ providedIn: 'root' })
 export class ToastMessageService {

@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { ToastMessageService } from '../../services/toast-message.service';
+import { ToastMessageService } from '../toast-message.service';
 
 @Component({
   selector: 'app-toast-custom',
   standalone: true,
-  templateUrl: './toast-custom.html',
-  styleUrl: './toast-custom.css',
+  templateUrl: './toast-custom.component.html',
+  styleUrl: './toast-custom.component.css',
 })
 export class ToastCustom {
   displayNumber = signal(true);

@@ -1,10 +1,11 @@
 import { Component, inject, input, output } from '@angular/core';
 import { Place } from '../../models/places-model';
 import { PlacesService } from '../../services/places.service';
+import { TooltipDirective } from '../../../common/directives/tooltip.directive';
 
 @Component({
   selector: 'app-places',
-  imports: [],
+  imports: [TooltipDirective],
   templateUrl: './places.component.html',
   styleUrl: './places.component.css',
 })
@@ -12,6 +13,7 @@ export class PlacesComponent {
   private placesService = inject(PlacesService);
   baseApiUrl: string = '';
 
+  tooltipText = input<string>('');
   places = input.required<Place[]>();
   selectPlace = output<Place>();
 

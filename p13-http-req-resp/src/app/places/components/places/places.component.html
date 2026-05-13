@@ -1,7 +1,11 @@
 <ul>
   @for (place of places(); track place.id) {
     <li class="place-item">
-      <button (click)="onSelectPlace(place)">
+      <button (click)="onSelectPlace(place)"
+              [appTooltip]="tooltipText()"
+              [class.has-tooltip]="!!tooltipText()"
+              [attr.appTooltip]="tooltipText() ? tooltipText() : null"
+              >
         <img
           [src]="baseApiUrl + '/' + place.image.src"
           [alt]="place.image.alt"

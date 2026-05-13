@@ -49,3 +49,33 @@ header p {
   color: #9eb5b4;
 }
 
+.app-tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+  max-width: 280px;
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid #0d373e;
+  background: rgba(31, 28, 44, 0.97);
+  color: #defaf8;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(143, 238, 255, 0.12);
+  opacity: 0;
+  transform: translateY(4px) scale(0.98);
+  transform-origin: center;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.app-tooltip.app-tooltip--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+

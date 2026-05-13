@@ -4,7 +4,7 @@
   }
 
   @if (hasPlaces()) {
-    <app-places [places]="places()!" (selectPlace)="onRemovePlease($event)" />
+    <app-places [places]="places()!" tooltipText="Click to remove from favorite places" (selectPlace)="onRemovePlease($event)" />
   } @else {
     <p class="fallback-text">Unfortunately, no places could be found.</p>
   }

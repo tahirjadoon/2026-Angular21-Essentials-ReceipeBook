@@ -9,6 +9,9 @@ backend => node express project
 	> npm start
 	Do CTRL+C to stop it
 	
+	The base api url is 
+		http://localhost:3000
+	
 src => angular project 
 	Setting up httpClient in angular app
 		Angular 21 or when using app/app.config.ts 

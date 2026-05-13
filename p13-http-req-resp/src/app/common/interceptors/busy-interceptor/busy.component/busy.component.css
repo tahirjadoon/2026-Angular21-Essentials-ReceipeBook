@@ -1,0 +1,111 @@
+.busy-root {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  /* Block clicks/taps to the app beneath while busy */
+  pointer-events: auto;
+  cursor: wait;
+}
+
+.busy-scrim {
+  position: absolute;
+  inset: 0;
+  /* Light maroon / rose wash — brighter than before so content stays readable */
+  background: rgba(200, 120, 135, 0.42);
+}
+
+.busy-bar-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.busy-bar-shimmer {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 130, 246, 0.95),
+    rgba(96, 165, 250, 1),
+    rgba(59, 130, 246, 0.95),
+    transparent
+  );
+  animation: busy-slide 1.1s ease-in-out infinite;
+}
+
+@keyframes busy-slide {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+.busy-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.busy-loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Blue arc on solid white ring — opaque white so scrim color doesn’t tint it */
+.spinner {
+  width: 56px;
+  height: 56px;
+  border: 5px solid #ffffff;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  box-shadow: 0 2px 14px rgba(15, 23, 42, 0.2);
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.busy-label {
+  margin: 0;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 2px solid rgba(29, 78, 216, 0.45);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #0f172a;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.97);
+  animation: busy-glow 2s ease-in-out infinite;
+}
+
+/* Breathing glow on the label pill (#4) */
+@keyframes busy-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 10px 32px rgba(15, 23, 42, 0.28),
+      0 0 0 0 rgba(29, 78, 216, 0.25);
+    border-color: rgba(29, 78, 216, 0.45);
+  }
+  50% {
+    box-shadow:
+      0 14px 40px rgba(29, 78, 216, 0.35),
+      0 0 36px 6px rgba(29, 78, 216, 0.45);
+    border-color: rgba(29, 78, 216, 0.85);
+  }
+}

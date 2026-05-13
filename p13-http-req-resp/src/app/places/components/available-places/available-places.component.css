@@ -1,0 +1,10 @@
+.fallback-text {
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.error-text{
+  color: #ef4444; /* red-500 */
+  text-align: center;
+}

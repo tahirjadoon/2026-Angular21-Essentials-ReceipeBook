@@ -1,0 +1,69 @@
+New project setup with 
+ng new p13-http-req-resp
+
+This project is combination of node express project and angular project. 
+
+backend => node express project
+	How to run the backend 
+	> npm install
+	> npm start
+	Do CTRL+C to stop it
+	
+	The base api url is 
+		http://localhost:3000
+	
+src => angular project 
+	Setting up httpClient in angular app
+		Angular 21 or when using app/app.config.ts 
+			add provideHttpClient() to providers array
+		When not using app/app.config.ts then go to main.ts and provide it there 
+			bootstrapApplication(AppComponent, {
+			  providers: [
+				provideHttpClient()
+			  ]
+			});
+					
+Project sructure
+> backend
+	> data
+		> places.json
+		> user-places.json 
+	> images
+		contains usr places 
+	> app.js
+	> package.json 
+	
+> src
+	> app 
+		> commom
+			> components
+				> toast-custom
+					contains css, html and ts files
+			> model
+				> local-storage-enum.ts
+				> toast-message.model.ts
+			> servies 
+				> local-storage.service.ts
+				> toast-message.service.ts
+		> places 
+			> components
+				> available-places
+					<app-places-container title="Available Places">
+					  <app-places [places]="places()!" />
+					</app-places-container>
+				> places-container
+				> places
+				> user-places	
+					<app-places-container title="Your Favorite Places">
+					  <p>Todo...</p>
+					</app-places-container>
+			> models
+				> places-model.ts
+			> services
+				> places.service.ts
+		> app.css
+		> app.html
+			<app-available-places />
+			<app-user-places />
+		> app.ts 
+		

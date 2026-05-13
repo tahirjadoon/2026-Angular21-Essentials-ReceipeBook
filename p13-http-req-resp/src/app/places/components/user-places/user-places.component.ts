@@ -16,14 +16,15 @@ export class UserPlacesComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
   
   error = signal<string>('');
-  places = signal<Place[] | undefined>(undefined);
+  places = this.placesService.loadedUserPlaces; //signal<Place[] | undefined>(undefined);
   hasPlaces = computed(() => this.places() && this.places()!.length > 0);
 
   ngOnInit(): void {
     const getPlacesSubscription = this.placesService.loadUserPlaces().subscribe({
-      next: (places) => {
-        this.places.set(places);
-      },
+      //only handling error and complete. the service method has a tap which is pushing data to the signal, used above
+      // next: (places) => {
+      //   this.places.set(places);
+      // },
       error: (error: Error) => {
         this.error.set(error.message);
       },

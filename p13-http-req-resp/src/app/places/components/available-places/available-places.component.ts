@@ -39,7 +39,7 @@ export class AvailablePlacesComponent implements OnInit {
   onSelectPlace(selectedPlace: Place) {
     const addPlaceSubscription = this.placesService.addPlaceToUserPlaces(selectedPlace).subscribe({
       next: (userPlaces: Place[]) => {
-        console.log(userPlaces);
+        //console.log(userPlaces);
       },
       error: (error: Error) => {
         this.error.set(error.message);

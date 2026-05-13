@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Place } from '../models/places-model';
 import { catchError, map, tap, throwError } from 'rxjs';
 import { ToastMessageService } from '../../common/toast-message/toast-message.service';
+import { ErrorService } from '../../common/error-modal/error.ervice';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,7 @@ import { ToastMessageService } from '../../common/toast-message/toast-message.se
 export class PlacesService {
   private httpClient = inject(HttpClient);
   private toastMessageService = inject(ToastMessageService);
+  private errorService = inject(ErrorService);
 
   baseApiUrl = 'http://localhost:3000';
 
@@ -51,8 +53,9 @@ export class PlacesService {
       // 2. Rollback on error
       catchError((error) => {
         this._userPlaces.set(previousPlaces);
+        this.errorService.showError('Failed to store selected place');
         this.toastMessageService.error(error.message);
-        return throwError(() => new Error('Something went wrong while adding place. Please try again later.'));
+        return throwError(() => new Error('Failed to store selected place'));
       }),
       // 3. Final sync ONLY if backend differs
       tap({

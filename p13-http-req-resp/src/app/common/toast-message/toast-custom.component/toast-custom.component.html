@@ -1,12 +1,13 @@
 
 
 <div class="toast-container">
+  <!-- bottom: i=n-1 (newest) => 0 — new toasts stack toward the bottom; older toasts sit higher. Step must exceed toast height + gap (was 70px and caused overlap). -->
   @for (toast of toastMessageService.toastmessages(); track toast.id; let i = $index) {
     <div class="toastmessage"
          [class.enter]="!toastMessageService.exitingIds().has(toast.id)"
          [class.exit]="toastMessageService.exitingIds().has(toast.id)"
          [class]="toast.type"
-         [style.bottom.px]="(toastMessageService.toastmessages().length - 1 - i) * 70">
+         [style.bottom.px]="(toastMessageService.toastmessages().length - 1 - i) * 90">
       <span class="icon"></span>
       <span class="text">{{ toast.text }}</span>
       @if (displayNumber()) {

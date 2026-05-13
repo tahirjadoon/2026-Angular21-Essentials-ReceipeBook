@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 300px;
+  width: 350px;
   z-index: 9999;
 }
 
@@ -17,9 +17,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 250px;
+  min-width: 350px;
+  min-height: 3.25rem;
   overflow: hidden;
   transition: all 0.3s ease-out;
+  /* Stack step in template (104px) = slot height + gap so toasts do not touch */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 /* Badge styles */

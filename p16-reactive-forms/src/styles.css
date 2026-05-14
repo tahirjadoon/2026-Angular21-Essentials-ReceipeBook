@@ -157,9 +157,16 @@ hr {
   cursor: pointer;
 }
 
-.button:hover,
-.button:focus {
+.button:hover:not(:disabled),
+.button:focus-visible:not(:disabled) {
   background-color: #319890;
+}
+
+.button:disabled {
+  background-color: #3d5c58;
+  color: #8a9aa8;
+  cursor: not-allowed;
+  opacity: 0.65;
 }
 
 .button-flat {
@@ -167,10 +174,16 @@ hr {
   color: #9cbaba;
 }
 
-.button-flat:hover,
-.button-flat:focus {
+.button-flat:hover:not(:disabled),
+.button-flat:focus-visible:not(:disabled) {
   background-color: transparent;
   color: #869999;
+}
+
+.button-flat:disabled {
+  color: #5a6a6a;
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .control:has(.ng-invalid.ng-touched.ng-dirty) label {

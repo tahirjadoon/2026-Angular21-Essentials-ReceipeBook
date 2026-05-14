@@ -4,16 +4,52 @@
   <div class="control-row">
     <div class="control no-margin">
       <label for="email">Email</label>
-      <!-- one way of binding form controls -->
-      <input id="email" type="email" [formControl]="loginForm.controls.email" />
+      <input id="email" type="email" formControlName="email" />
     </div>
 
     <div class="control no-margin">
       <label for="password">Password</label>
-      <!-- another way of binding form controls -->
       <input id="password" type="password" formControlName="password" />
     </div>
 
-    <button class="button">Login</button>
+    <button class="button" [disabled]="loginForm.invalid">Login</button>
   </div>
+
+  @if (emailIsInvalid) {
+
+    @if (emailCtrl.errors?.['required']) {
+    <p class="control-error">Email is required.</p>
+    }
+
+    @if (emailCtrl.errors?.['email']) {
+    <p class="control-error">Please enter a valid email address.</p>
+    }
+
+  }
+
+  @if (passwordIsInvalid) {
+
+    @if (passwordCtrl.errors?.['required']) {
+    <p class="control-error">Password is required.</p>
+    }
+
+    @if (passwordCtrl.errors?.['minlength']) {
+    <p class="control-error">
+      Password must be at least {{ passwordCtrl.errors?.['minlength'].requiredLength }} characters.
+    </p>
+    }
+
+    @if (passwordCtrl.errors?.['pattern']) {
+    <p class="control-error">
+      Password can contain only letters and numbers.
+    </p>
+    }
+
+  }
+
+  @if ((emailIsInvalid || passwordIsInvalid) && loginForm.invalid){
+  <p class="control-error">
+    Invalid values detected. Please check the form and try again.
+  </p>
+  }
 </form>

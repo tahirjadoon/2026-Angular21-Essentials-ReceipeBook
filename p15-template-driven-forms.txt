@@ -1,0 +1,5 @@
+ng new p15-template-driven-forms
+√ Which stylesheet system would you like to use? CSS             [ https://developer.mozilla.org/docs/Web/CSS
+          ]
+√ Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? No
+√ Which AI tools do you want to configure with Angular best practices? https://angular.dev/ai/develop-with-ai None

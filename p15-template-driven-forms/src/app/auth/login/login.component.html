@@ -1,17 +1,60 @@
-<form>
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
   <h2>Login</h2>
 
   <div class="control-row">
     <div class="control no-margin">
       <label for="email">Email</label>
-      <input id="email" type="email" />
+      <input id="email" name="email" type="email" ngModel #emailCtrl="ngModel" required email />
     </div>
 
     <div class="control no-margin">
       <label for="password">Password</label>
-      <input id="password" type="password" />
+      <input id="password" name="password" type="password" ngModel #passwordCtrl="ngModel" required minlength="6" pattern="^[A-Za-z0-9]+$" />
     </div>
 
-    <button class="button">Login</button>
+    <button type="submit" class="button">Login</button>
   </div>
+
+  <!-- @if(loginForm.form.controls['email']?.touched &&  
+      loginForm.form.controls['password']?.touched && 
+      loginForm.form.invalid){
+  <p class="control-error">
+    Invalid values detected. Please check the form and try again.
+  </p>
+  } -->
+
+  @if(emailCtrl.touched && emailCtrl.invalid){
+    @if (emailCtrl.errors?.['required']) {
+      <p class="control-error">Email is required.</p>
+    }
+
+    @if (emailCtrl.errors?.['email']) {
+      <p class="control-error">Please enter a valid email address.</p>
+    }
+  }
+
+  @if(passwordCtrl.touched && passwordCtrl.invalid){
+    @if (passwordCtrl.errors?.['required']) {
+      <p class="control-error">Password is required.</p>
+    }
+
+    @if (passwordCtrl.errors?.['minlength']) {
+      <p class="control-error">
+        Password must be at least {{ passwordCtrl.errors?.['minlength'].requiredLength }} characters.
+      </p>
+    }
+
+    @if (passwordCtrl.errors?.['pattern']) {
+      <p class="control-error">
+        Password can contain only letters and numbers.
+      </p>
+    }
+  }
+
+  @if(emailCtrl.touched && passwordCtrl.touched && loginForm.invalid){
+  <p class="control-error">
+    Invalid values detected. Please check the form and try again.
+  </p>
+  }
+
 </form>

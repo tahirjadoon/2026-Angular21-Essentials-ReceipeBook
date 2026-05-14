@@ -41,7 +41,13 @@
 
     @if (passwordCtrl.errors?.['pattern']) {
     <p class="control-error">
-      Password can contain only letters and numbers.
+      Password can contain only letters, numbers, and question marks.
+    </p>
+    }
+
+    @if (passwordCtrl.errors?.['mustContainQuestionMark']) {
+    <p class="control-error">
+      Password must include a question mark (?).
     </p>
     }
 

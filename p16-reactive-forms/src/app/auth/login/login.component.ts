@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { mustContainQuestionMark } from '../../0common/validators-reactive/must-contain-question-mark.validator';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
-    password: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6), Validators.pattern(/^[A-Za-z0-9]+$/)] }),
+    password: new FormControl('', {
+      nonNullable: true, validators: [ Validators.required, Validators.minLength(6), Validators.pattern(/^[A-Za-z0-9?]+$/), mustContainQuestionMark()],
+    }),
   });
 
   constructor(){

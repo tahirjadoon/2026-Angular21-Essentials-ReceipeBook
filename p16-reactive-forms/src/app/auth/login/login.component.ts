@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { emailIsUnique } from '../../0common/validators-reactive/email-is-unique.validator';
 import { mustContainQuestionMark } from '../../0common/validators-reactive/must-contain-question-mark.validator';
 
 @Component({
@@ -11,9 +12,14 @@ import { mustContainQuestionMark } from '../../0common/validators-reactive/must-
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
+    email: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.email],
+      asyncValidators: [emailIsUnique()],
+    }),
     password: new FormControl('', {
-      nonNullable: true, validators: [ Validators.required, Validators.minLength(6), Validators.pattern(/^[A-Za-z0-9?]+$/), mustContainQuestionMark()],
+      nonNullable: true, 
+      validators: [ Validators.required, Validators.minLength(6), Validators.pattern(/^[A-Za-z0-9?]+$/), mustContainQuestionMark()],
     }),
   });
 
@@ -35,7 +41,11 @@ export class LoginComponent implements OnInit {
   }
   get emailIsInvalid(){
     const emailCtrl = this.loginForm.controls.email;
-    return emailCtrl.invalid && emailCtrl.dirty && emailCtrl.touched;
+    return (
+      emailCtrl.invalid &&
+      emailCtrl.dirty &&
+      (emailCtrl.touched || !!emailCtrl.errors?.['emailIsUnique'])
+    );
   }
 
   get passwordCtrl() {

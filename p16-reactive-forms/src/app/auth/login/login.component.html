@@ -12,7 +12,7 @@
       <input id="password" type="password" formControlName="password" />
     </div>
 
-    <button class="button" [disabled]="loginForm.invalid">Login</button>
+    <button class="button" [disabled]="loginForm.invalid || loginForm.pending">Login</button>
   </div>
 
   @if (emailIsInvalid) {
@@ -23,6 +23,10 @@
 
     @if (emailCtrl.errors?.['email']) {
     <p class="control-error">Please enter a valid email address.</p>
+    }
+
+    @if (emailCtrl.errors?.['emailIsUnique']) {
+    <p class="control-error">This email is already in use. Please choose another address.</p>
     }
 
   }

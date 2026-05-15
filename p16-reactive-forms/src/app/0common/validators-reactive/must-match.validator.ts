@@ -4,19 +4,27 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
  * Validates that two form controls inside a FormGroup have the same value.
  * Example: password === confirmPassword
  */
-export function mustMatch(controlName: string, matchingControlName: string): ValidatorFn {
-  return (group: AbstractControl): ValidationErrors | null => {
-    const control = group.get(controlName);
-    const matchingControl = group.get(matchingControlName);
+export function mustMatch(otherControlName: string): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    if (!control.parent) {
+      return null; // parent not ready yet
+    }
 
-    if(!control || !matchingControl)  return null; // controls not found in the group
+    const otherControl = control.parent.get(otherControlName);
+    if (!otherControl) {
+      return null; // other control not found
+    }
 
     const value = control.value;
-    const matchingValue = matchingControl.value;
+    const otherValue = otherControl.value;
 
-    // don't validate if either control is empty
-    if(value === '' || matchingValue === '') return null; 
+    // Let required/minlength handle empty cases
+    if (value === '' || otherValue === '') {
+      return null;
+    }
 
-    return value === matchingValue ? null : { mustMatch: true };
+    return value === otherValue
+      ? null
+      : { mustMatch: true };
   }
 }

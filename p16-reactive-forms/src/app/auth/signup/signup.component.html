@@ -5,58 +5,58 @@
   <div class="control">
     <label for="email">Email</label>
     <input id="email" type="email" formControlName="email" autocomplete="email" />
+    @if(signupForm.controls.email.invalid && signupForm.controls.email.touched && signupForm.controls.email.dirty) {
+      <div>
+        @if (signupForm.controls.email.errors?.['required']) {
+        <div class="control-error">Email is required.</div>
+        }
+        @if (signupForm.controls.email.errors?.['email']) {
+        <div class="control-error">Please enter a valid email address.</div>
+        }
+        @if (signupForm.controls.email.errors?.['emailIsUnique']) {
+        <div class="control-error">This email is already in use. Please choose another address.</div>
+        }
+      </div>
+    }
   </div>
-  @if(signupForm.controls.email.invalid && signupForm.controls.email.touched && signupForm.controls.email.dirty) {
-    <div>
-      @if (signupForm.controls.email.errors?.['required']) {
-      <p class="control-error">Email is required.</p>
-      }
-      @if (signupForm.controls.email.errors?.['email']) {
-      <p class="control-error">Please enter a valid email address.</p>
-      }
-      @if (signupForm.controls.email.errors?.['emailIsUnique']) {
-      <p class="control-error">This email is already in use. Please choose another address.</p>
-      }
-    </div>
-  }
 
   <div class="control-row">
     <div class="control">
       <label for="password">Password</label>
       <input id="password" type="password" formControlName="password" autocomplete="new-password" />
+      @if(signupForm.controls.password.invalid && signupForm.controls.password.touched && signupForm.controls.password.dirty) {
+        <div>
+          @if (signupForm.controls.password.errors?.['required']) {
+          <div class="control-error">Password is required.</div>
+          }
+          @if (signupForm.controls.password.errors?.['minlength']) {
+          <div class="control-error">Password must be at least {{ signupForm.controls.password.errors?.['minlength'].requiredLength }} characters.</div>
+          }
+          @if (signupForm.controls.password.errors?.['pattern']) {
+          <div class="control-error">Password can contain only letters, numbers, and question marks.</div>
+          }
+          @if (signupForm.controls.password.errors?.['mustContainQuestionMark']) {
+          <div class="control-error">Password must include a question mark (?).</div>
+          }
+        </div>
+      }
     </div>
 
     <div class="control">
       <label for="confirmPassword">Confirm Password</label>
       <input id="confirmPassword" type="password" formControlName="confirmPassword" autocomplete="new-password" />
+      @if(signupForm.controls.confirmPassword.invalid && signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.dirty) {
+        <div>
+          @if (signupForm.controls.confirmPassword.errors?.['required']) {
+          <div class="control-error">Please confirm your password.</div>
+          }
+          @if (signupForm.controls.confirmPassword.errors?.['mustMatch']) {
+          <div class="control-error">Password and confirm password must match</div>
+          }
+        </div>
+      }
     </div>
   </div>
-  @if(signupForm.controls.password.invalid && signupForm.controls.password.touched && signupForm.controls.password.dirty) {
-    <div>
-      @if (signupForm.controls.password.errors?.['required']) {
-      <p class="control-error">Password is required.</p>
-      }
-      @if (signupForm.controls.password.errors?.['minlength']) {
-      <p class="control-error">Password must be at least {{ signupForm.controls.password.errors?.['minlength'].requiredLength }} characters.</p>
-      }
-      @if (signupForm.controls.password.errors?.['pattern']) {
-      <p class="control-error">Password can contain only letters, numbers, and question marks.</p>
-      }
-      @if (signupForm.controls.password.errors?.['mustContainQuestionMark']) {
-      <p class="control-error">Password must include a question mark (?).</p>
-      }
-    </div>
-  }
-  @if(signupForm.controls.confirmPassword.invalid && signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.dirty) {
-    <div>
-      @if (signupForm.controls.confirmPassword.errors?.['required']) {
-      <p class="control-error">Please confirm your password.</p>
-      }
-      @if (signupForm.controls.confirmPassword.errors?.['mustMatch']) {
-      <p class="control-error">Password and confirm password must match</p>
-      }
-    </div>
-  }
 
   <hr />
 
@@ -65,27 +65,27 @@
       <div class="control">
         <label for="first-name">First Name</label>
         <input type="text" id="first-name" name="first-name" formControlName="firstName" />
+        @if(signupForm.controls.firstName.invalid && signupForm.controls.firstName.touched && signupForm.controls.firstName.dirty) {
+          <div>
+            @if (signupForm.controls.firstName.errors?.['required']) {
+            <div class="control-error">First name is required</div>
+            }
+          </div>
+        }
       </div>
 
       <div class="control">
         <label for="last-name">Last Name</label>
         <input type="text" id="last-name" name="last-name" formControlName="lastName" />
+        @if(signupForm.controls.lastName.invalid && signupForm.controls.lastName.touched && signupForm.controls.lastName.dirty) {
+          <div>
+            @if (signupForm.controls.lastName.errors?.['required']) {
+            <div class="control-error">Last name is required</div>
+            }
+          </div>
+        }
       </div>
     </div>
-    @if(signupForm.controls.firstName.invalid && signupForm.controls.firstName.touched && signupForm.controls.firstName.dirty) {
-      <div>
-        @if (signupForm.controls.firstName.errors?.['required']) {
-        <p class="control-error">First name is required</p>
-        }
-      </div>
-    }
-    @if(signupForm.controls.lastName.invalid && signupForm.controls.lastName.touched && signupForm.controls.lastName.dirty) {
-      <div>
-        @if (signupForm.controls.lastName.errors?.['required']) {
-        <p class="control-error">Last name is required</p>
-        }
-      </div>
-    }
 
     <fieldset>
       <legend>Your Address</legend>
@@ -94,65 +94,64 @@
         <div class="control">
           <label for="street">Street</label>
           <input type="text" id="street" name="street" formControlName="street" />
+          @if(signupForm.controls.street.invalid && signupForm.controls.street.touched && signupForm.controls.street.dirty) {
+            <div>
+              @if (signupForm.controls.street.errors?.['required']) {
+              <div class="control-error">Street is required</div>
+              }
+              @if (signupForm.controls.street.errors?.['canadianAddress']) {
+              <div class="control-error">Street name is invalid</div>
+              }
+            </div>
+          }
         </div>
-        @if(signupForm.controls.street.invalid && signupForm.controls.street.touched && signupForm.controls.street.dirty) {
-          <div>
-            @if (signupForm.controls.street.errors?.['required']) {
-            <p class="control-error">Street is required</p>
-            }
-            @if (signupForm.controls.street.errors?.['canadianAddress']) {
-            <p class="control-error">Street name is invalid</p>
-            }
-          </div>
-        }
 
         <div class="control">
           <label for="number">Number</label>
           <input type="text" id="number" name="number" formControlName="number" />
+          @if(signupForm.controls.number.invalid && signupForm.controls.number.touched && signupForm.controls.number.dirty) {
+            <div>
+              @if (signupForm.controls.number.errors?.['required']) {
+              <div class="control-error">Number is required</div>
+              }
+              @if (signupForm.controls.number.errors?.['positiveNumber']) {
+              <div class="control-error">Number must be a positive integer</div>
+              }
+            </div>
+          }
         </div>
-        @if(signupForm.controls.number.invalid && signupForm.controls.number.touched && signupForm.controls.number.dirty) {
-          <div>
-            @if (signupForm.controls.number.errors?.['required']) {
-            <p class="control-error">Number is required</p>
-            }
-            @if (signupForm.controls.number.errors?.['positiveNumber']) {
-            <p class="control-error">Number must be a positive integer</p>
-            }
-          </div>
-        }
-        
       </div>
 
       <div class="control-row">
         <div class="control">
           <label for="postal-code">Postal Code</label>
           <input type="text" id="postal-code" name="postal-code" formControlName="postalCode" />
+          @if(signupForm.controls.postalCode.invalid && signupForm.controls.postalCode.touched && signupForm.controls.postalCode.dirty) {
+            <div>
+              @if (signupForm.controls.postalCode.errors?.['required']) {
+              <div class="control-error">Postal code is required</div>
+              }
+              @if (signupForm.controls.postalCode.errors?.['postalCode']) {
+              <div class="control-error">Invalid postal code</div>
+              }
+            </div>
+          }
         </div>
-        @if(signupForm.controls.postalCode.invalid && signupForm.controls.postalCode.touched && signupForm.controls.postalCode.dirty) {
-          <div>
-            @if (signupForm.controls.postalCode.errors?.['required']) {
-            <p class="control-error">Number is required</p>
-            }
-            @if (signupForm.controls.postalCode.errors?.['postalCode']) {
-            <p class="control-error">Invalid postal code</p>
-            }
-          </div>
-        }
 
         <div class="control">
           <label for="city">City</label>
           <input type="text" id="city" name="city" formControlName="city" />
+          @if(signupForm.controls.city.invalid && signupForm.controls.city.touched && signupForm.controls.city.dirty) {
+            <div>
+              @if (signupForm.controls.city.errors?.['required']) {
+              <div class="control-error">City is required</div>
+              }
+              @if (signupForm.controls.city.errors?.['canadianAddress']) {
+              <div class="control-error">Invalid city name</div>
+              }
+            </div>
+          }
         </div>
-        @if(signupForm.controls.city.invalid && signupForm.controls.city.touched && signupForm.controls.city.dirty) {
-          <div>
-            @if (signupForm.controls.city.errors?.['required']) {
-            <p class="control-error">Number is required</p>
-            }
-            @if (signupForm.controls.city.errors?.['canadianAddress']) {
-            <p class="control-error">Invalid city name</p>
-            }
-          </div>
-        }
       </div>
     </fieldset>
   </div>
@@ -162,13 +161,20 @@
   <div class="control-row">
     <div class="control">
       <label for="role">What best describes your role?</label>
-      <select id="role" name="role">
+      <select id="role" name="role" formControlName="role">
         <option value="student">Student</option>
         <option value="teacher">Teacher</option>
         <option value="employee">Employee</option>
         <option value="founder">Founder</option>
         <option value="other">Other</option>
       </select>
+      @if(signupForm.controls.role.invalid && signupForm.controls.role.touched && signupForm.controls.role.dirty) {
+        <div>
+          @if (signupForm.controls.role.errors?.['required']) {
+          <div class="control-error">Role is required</div>
+          }
+        </div>
+      }
     </div>
   </div>
 
@@ -191,11 +197,19 @@
   </fieldset>
 
   <div class="control-row">
-    <div class="control">
+    <div class="control control-terms">
       <label for="terms-and-conditions">
-        <input type="checkbox" id="terms-and-conditions" name="terms" />
+        <input type="checkbox" id="terms-and-conditions" name="terms" formControlName="terms" />
         I agree to the terms and conditions
       </label>
+      @if(signupForm.controls.terms.invalid && signupForm.controls.terms.touched) {
+        <div>
+          @if (signupForm.controls.terms.errors?.['required']) {
+          <div class="control-error">You must agree to the terms and conditions</div>
+          }
+        </div>
+      }
+      
     </div>
   </div>
 

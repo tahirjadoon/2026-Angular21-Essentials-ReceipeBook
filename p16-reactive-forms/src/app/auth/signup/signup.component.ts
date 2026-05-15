@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { form } from '@angular/forms/signals';
 import { mustContainQuestionMark } from '../../0common/validators-reactive/must-contain-question-mark.validator';
 import { mustMatch } from '../../0common/validators-reactive/must-match.validator';
 import { emailIsUnique } from '../../0common/validators-reactive/email-is-unique.validator';
@@ -54,13 +53,13 @@ export class SignupComponent {
       nonNullable: true,
       validators: [Validators.required, canadianAddress()]
     }),
-    role: new FormControl('', {
+    role: new FormControl<'student' | 'teacher' | 'employee' | 'founder' | 'other'>('other', {
       nonNullable: true,
+      validators: [Validators.required]
     }),
-    findUsGoogle: new FormControl(false),
-    findUsFriend: new FormControl(false),
-    findUsOther: new FormControl(false),
-    terms: new FormControl(false),
+    // Checkboxes are `false` when unchecked; `Validators.required` does not treat false as empty.
+    // Use `requiredTrue` so only `true` (checked) is valid. Error key is still `required`.
+    terms: new FormControl(false, { nonNullable: true, validators: [Validators.requiredTrue] }),
   });
 
   onSubmit() {

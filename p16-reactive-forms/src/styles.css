@@ -110,18 +110,19 @@ fieldset {
 }
 
 .control-error {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  display: block;
   color: #ffca99;
-  height: 0.5rem;
-  padding: 0.25rem 0 0 0;
-  height: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  margin: 0.15rem 0;
 }
 
-.control-error p {
-  margin: 0;
+.control-error:first-of-type {
+  margin-top: 0.25rem;
+}
+
+.control-error:last-of-type {
+  margin-bottom: 0.35rem;
 }
 
 .control-row {

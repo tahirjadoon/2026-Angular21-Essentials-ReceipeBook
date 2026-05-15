@@ -18,15 +18,15 @@
   @if (emailIsInvalid) {
 
     @if (emailCtrl.errors?.['required']) {
-    <p class="control-error">Email is required.</p>
+    <div class="control-error">Email is required.</div>
     }
 
     @if (emailCtrl.errors?.['email']) {
-    <p class="control-error">Please enter a valid email address.</p>
+    <div class="control-error">Please enter a valid email address.</div>
     }
 
     @if (emailCtrl.errors?.['emailIsUnique']) {
-    <p class="control-error">This email is already in use. Please choose another address.</p>
+    <div class="control-error">This email is already in use. Please choose another address.</div>
     }
 
   }
@@ -34,32 +34,32 @@
   @if (passwordIsInvalid) {
 
     @if (passwordCtrl.errors?.['required']) {
-    <p class="control-error">Password is required.</p>
+    <div class="control-error">Password is required.</div>
     }
 
     @if (passwordCtrl.errors?.['minlength']) {
-    <p class="control-error">
+    <div class="control-error">
       Password must be at least {{ passwordCtrl.errors?.['minlength'].requiredLength }} characters.
-    </p>
+    </div>
     }
 
     @if (passwordCtrl.errors?.['pattern']) {
-    <p class="control-error">
+    <div class="control-error">
       Password can contain only letters, numbers, and question marks.
-    </p>
+    </div>
     }
 
     @if (passwordCtrl.errors?.['mustContainQuestionMark']) {
-    <p class="control-error">
+    <div class="control-error">
       Password must include a question mark (?).
-    </p>
+    </div>
     }
 
   }
 
   @if ((emailIsInvalid || passwordIsInvalid) && loginForm.invalid){
-  <p class="control-error">
+  <div class="control-error">
     Invalid values detected. Please check the form and try again.
-  </p>
+  </div>
   }
 </form>

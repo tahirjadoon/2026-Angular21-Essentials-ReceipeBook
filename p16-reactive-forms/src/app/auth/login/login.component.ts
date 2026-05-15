@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { emailIsUnique } from '../../0common/validators-reactive/email-is-unique.validator';
 import { mustContainQuestionMark } from '../../0common/validators-reactive/must-contain-question-mark.validator';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,8 @@ import { mustContainQuestionMark } from '../../0common/validators-reactive/must-
   imports: [ReactiveFormsModule]
 })
 export class LoginComponent implements OnInit {
+
+  private destroyRef = inject(DestroyRef);
 
   loginForm = new FormGroup({
     email: new FormControl('', {
@@ -34,6 +37,24 @@ export class LoginComponent implements OnInit {
       " Untouched: ", this.loginForm.untouched,
       " Pristine: ", this.loginForm.pristine,
       " Dirty: ", this.loginForm.dirty);
+
+      const storageKey = 'rctfloginFormEmail';
+
+      //getting and setting the email value from local storage if it exists
+      const savedEmail = localStorage.getItem(storageKey);
+      if (savedEmail) {
+        const parsedEmail = JSON.parse(savedEmail);
+        this.loginForm.patchValue({ email: parsedEmail.email || '' });
+      }
+
+      //saving the email as being typed by the user to local storage with a debounce to avoid excessive writes
+      const subscripton = this.loginForm.valueChanges.pipe(debounceTime(500))
+      .subscribe({
+        next: (value) => {
+          localStorage.setItem(storageKey, JSON.stringify({ email: value.email}));
+        }
+      });
+      this.destroyRef.onDestroy(() => subscripton.unsubscribe());
   }
 
   get emailCtrl() {

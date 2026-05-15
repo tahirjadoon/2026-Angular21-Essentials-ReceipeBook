@@ -39,21 +39,23 @@ export class SignupComponent {
       nonNullable: true,
       validators: [Validators.required]
     }),
-    street: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, canadianAddress()]
-    }),
-    number: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, positiveNumber()]
-    }),
-    postalCode: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, postalCode()]
-    }),
-    city: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, canadianAddress()]
+    address: new FormGroup({
+      street: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, canadianAddress()]
+      }),
+      number: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, positiveNumber()]
+      }),
+      postalCode: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, postalCode()]
+      }),
+      city: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, canadianAddress()]
+      }),
     }),
     role: new FormControl<'student' | 'teacher' | 'employee' | 'founder' | 'other'>('other', {
       nonNullable: true,
@@ -68,6 +70,10 @@ export class SignupComponent {
     return this.signupForm.controls.passwords as FormGroup;
   }
 
+  get addressGroup() {
+    return this.signupForm.controls.address as FormGroup;
+  }
+  
   onSubmit() {
     console.log("Valid: ", this.signupForm.valid,
       " Invalid: ", this.signupForm.invalid,

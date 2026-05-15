@@ -97,7 +97,7 @@
       </div>
     </div>
 
-    <fieldset>
+    <fieldset formGroupName="address">
       <legend>Your Address</legend>
 
       <div class="control-row">
@@ -105,12 +105,12 @@
           <label for="street">Street</label>
           <input type="text" id="street" name="street" formControlName="street" />
           <ng-container>
-          @if(signupForm.controls.street.invalid && signupForm.controls.street.touched && signupForm.controls.street.dirty) {
+          @if(addressGroup.controls['street'].invalid && addressGroup.controls['street'].touched && addressGroup.controls['street'].dirty) {
             <div>
-              @if (signupForm.controls.street.errors?.['required']) {
+              @if (addressGroup.controls['street'].errors?.['required']) {
               <div class="control-error">Street is required</div>
               }
-              @if (signupForm.controls.street.errors?.['canadianAddress']) {
+              @if (addressGroup.controls['street'].errors?.['canadianAddress']) {
               <div class="control-error">Street name is invalid</div>
               }
             </div>
@@ -122,12 +122,12 @@
           <label for="number">Number</label>
           <input type="text" id="number" name="number" formControlName="number" />
           <ng-container>
-          @if(signupForm.controls.number.invalid && signupForm.controls.number.touched && signupForm.controls.number.dirty) {
+          @if(addressGroup.controls['number'].invalid && addressGroup.controls['number'].touched && addressGroup.controls['number'].dirty) {
             <div>
-              @if (signupForm.controls.number.errors?.['required']) {
+              @if (addressGroup.controls['number'].errors?.['required']) {
               <div class="control-error">Number is required</div>
               }
-              @if (signupForm.controls.number.errors?.['positiveNumber']) {
+              @if (addressGroup.controls['number'].errors?.['positiveNumber']) {
               <div class="control-error">Number must be a positive integer</div>
               }
             </div>
@@ -141,12 +141,12 @@
           <label for="postal-code">Postal Code</label>
           <input type="text" id="postal-code" name="postal-code" formControlName="postalCode" />
           <ng-container>
-          @if(signupForm.controls.postalCode.invalid && signupForm.controls.postalCode.touched && signupForm.controls.postalCode.dirty) {
+          @if(addressGroup.controls['postalCode'].invalid && addressGroup.controls['postalCode'].touched && addressGroup.controls['postalCode'].dirty) {
             <div>
-              @if (signupForm.controls.postalCode.errors?.['required']) {
+              @if (addressGroup.controls['postalCode'].errors?.['required']) {
               <div class="control-error">Postal code is required</div>
               }
-              @if (signupForm.controls.postalCode.errors?.['postalCode']) {
+              @if (addressGroup.controls['postalCode'].errors?.['postalCode']) {
               <div class="control-error">Invalid postal code</div>
               }
             </div>
@@ -158,12 +158,12 @@
           <label for="city">City</label>
           <input type="text" id="city" name="city" formControlName="city" />
           <ng-container>
-          @if(signupForm.controls.city.invalid && signupForm.controls.city.touched && signupForm.controls.city.dirty) {
+          @if(addressGroup.controls['city'].invalid && addressGroup.controls['city'].touched && addressGroup.controls['city'].dirty) {
             <div>
-              @if (signupForm.controls.city.errors?.['required']) {
+              @if (addressGroup.controls['city'].errors?.['required']) {
               <div class="control-error">City is required</div>
               }
-              @if (signupForm.controls.city.errors?.['canadianAddress']) {
+              @if (addressGroup.controls['city'].errors?.['canadianAddress']) {
               <div class="control-error">Invalid city name</div>
               }
             </div>

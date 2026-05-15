@@ -5,6 +5,7 @@
   <div class="control">
     <label for="email">Email</label>
     <input id="email" type="email" formControlName="email" autocomplete="email" />
+    <ng-container>
     @if(signupForm.controls.email.invalid && signupForm.controls.email.touched && signupForm.controls.email.dirty) {
       <div>
         @if (signupForm.controls.email.errors?.['required']) {
@@ -18,43 +19,48 @@
         }
       </div>
     }
+    </ng-container>
   </div>
 
-  <div class="control-row">
+  <div class="control-row" formGroupName="passwords">
     <div class="control">
       <label for="password">Password</label>
       <input id="password" type="password" formControlName="password" autocomplete="new-password" />
-      @if(signupForm.controls.password.invalid && signupForm.controls.password.touched && signupForm.controls.password.dirty) {
+      <ng-container>
+      @if(passwordGroup.controls['password'].invalid && passwordGroup.controls['password'].touched && passwordGroup.controls['password'].dirty) {
         <div>
-          @if (signupForm.controls.password.errors?.['required']) {
+          @if (passwordGroup.controls['password'].errors?.['required']) {
           <div class="control-error">Password is required.</div>
           }
-          @if (signupForm.controls.password.errors?.['minlength']) {
-          <div class="control-error">Password must be at least {{ signupForm.controls.password.errors?.['minlength'].requiredLength }} characters.</div>
+          @if (passwordGroup.controls['password'].errors?.['minlength']) {
+          <div class="control-error">Password must be at least {{ passwordGroup.controls['password'].errors?.['minlength'].requiredLength }} characters.</div>
           }
-          @if (signupForm.controls.password.errors?.['pattern']) {
+          @if (passwordGroup.controls['password'].errors?.['pattern']) {
           <div class="control-error">Password can contain only letters, numbers, and question marks.</div>
           }
-          @if (signupForm.controls.password.errors?.['mustContainQuestionMark']) {
+          @if (passwordGroup.controls['password'].errors?.['mustContainQuestionMark']) {
           <div class="control-error">Password must include a question mark (?).</div>
           }
         </div>
       }
+      </ng-container>
     </div>
 
     <div class="control">
       <label for="confirmPassword">Confirm Password</label>
       <input id="confirmPassword" type="password" formControlName="confirmPassword" autocomplete="new-password" />
-      @if(signupForm.controls.confirmPassword.invalid && signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.dirty) {
+      <ng-container>
+      @if(passwordGroup.controls['confirmPassword'].invalid && passwordGroup.controls['confirmPassword'].touched && passwordGroup.controls['confirmPassword'].dirty) {
         <div>
-          @if (signupForm.controls.confirmPassword.errors?.['required']) {
+          @if (passwordGroup.controls['confirmPassword'].errors?.['required']) {
           <div class="control-error">Please confirm your password.</div>
           }
-          @if (signupForm.controls.confirmPassword.errors?.['mustMatch']) {
+          @if (passwordGroup.controls['confirmPassword'].errors?.['mustMatch']) {
           <div class="control-error">Password and confirm password must match</div>
           }
         </div>
       }
+      </ng-container>
     </div>
   </div>
 
@@ -65,6 +71,7 @@
       <div class="control">
         <label for="first-name">First Name</label>
         <input type="text" id="first-name" name="first-name" formControlName="firstName" />
+        <ng-container>
         @if(signupForm.controls.firstName.invalid && signupForm.controls.firstName.touched && signupForm.controls.firstName.dirty) {
           <div>
             @if (signupForm.controls.firstName.errors?.['required']) {
@@ -72,11 +79,13 @@
             }
           </div>
         }
+        </ng-container>
       </div>
 
       <div class="control">
         <label for="last-name">Last Name</label>
         <input type="text" id="last-name" name="last-name" formControlName="lastName" />
+        <ng-container>
         @if(signupForm.controls.lastName.invalid && signupForm.controls.lastName.touched && signupForm.controls.lastName.dirty) {
           <div>
             @if (signupForm.controls.lastName.errors?.['required']) {
@@ -84,6 +93,7 @@
             }
           </div>
         }
+        </ng-container>
       </div>
     </div>
 
@@ -94,6 +104,7 @@
         <div class="control">
           <label for="street">Street</label>
           <input type="text" id="street" name="street" formControlName="street" />
+          <ng-container>
           @if(signupForm.controls.street.invalid && signupForm.controls.street.touched && signupForm.controls.street.dirty) {
             <div>
               @if (signupForm.controls.street.errors?.['required']) {
@@ -104,11 +115,13 @@
               }
             </div>
           }
+          </ng-container>
         </div>
 
         <div class="control">
           <label for="number">Number</label>
           <input type="text" id="number" name="number" formControlName="number" />
+          <ng-container>
           @if(signupForm.controls.number.invalid && signupForm.controls.number.touched && signupForm.controls.number.dirty) {
             <div>
               @if (signupForm.controls.number.errors?.['required']) {
@@ -119,6 +132,7 @@
               }
             </div>
           }
+          </ng-container>
         </div>
       </div>
 
@@ -126,6 +140,7 @@
         <div class="control">
           <label for="postal-code">Postal Code</label>
           <input type="text" id="postal-code" name="postal-code" formControlName="postalCode" />
+          <ng-container>
           @if(signupForm.controls.postalCode.invalid && signupForm.controls.postalCode.touched && signupForm.controls.postalCode.dirty) {
             <div>
               @if (signupForm.controls.postalCode.errors?.['required']) {
@@ -136,11 +151,13 @@
               }
             </div>
           }
+          </ng-container>
         </div>
 
         <div class="control">
           <label for="city">City</label>
           <input type="text" id="city" name="city" formControlName="city" />
+          <ng-container>
           @if(signupForm.controls.city.invalid && signupForm.controls.city.touched && signupForm.controls.city.dirty) {
             <div>
               @if (signupForm.controls.city.errors?.['required']) {
@@ -151,6 +168,7 @@
               }
             </div>
           }
+          </ng-container>
         </div>
       </div>
     </fieldset>
@@ -168,6 +186,7 @@
         <option value="founder">Founder</option>
         <option value="other">Other</option>
       </select>
+      <ng-container>
       @if(signupForm.controls.role.invalid && signupForm.controls.role.touched && signupForm.controls.role.dirty) {
         <div>
           @if (signupForm.controls.role.errors?.['required']) {
@@ -175,6 +194,7 @@
           }
         </div>
       }
+      </ng-container>
     </div>
   </div>
 
@@ -202,6 +222,7 @@
         <input type="checkbox" id="terms-and-conditions" name="terms" formControlName="terms" />
         I agree to the terms and conditions
       </label>
+      <ng-container>
       @if(signupForm.controls.terms.invalid && signupForm.controls.terms.touched) {
         <div>
           @if (signupForm.controls.terms.errors?.['required']) {
@@ -209,7 +230,7 @@
           }
         </div>
       }
-      
+      </ng-container>
     </div>
   </div>
 

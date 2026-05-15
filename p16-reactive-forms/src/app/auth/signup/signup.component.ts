@@ -21,13 +21,15 @@ export class SignupComponent {
       validators: [Validators.required, Validators.email],
       asyncValidators: [emailIsUnique()]
     }),
-    password: new FormControl('', {
+    passwords: new FormGroup({
+      password: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(6), Validators.pattern(/^[A-Za-z0-9?]+$/), mustContainQuestionMark()]
-    }),
-    confirmPassword: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, mustMatch('password')]
+      }),
+      confirmPassword: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, mustMatch('password')]
+      }),
     }),
     firstName: new FormControl('', {
       nonNullable: true,
@@ -61,6 +63,10 @@ export class SignupComponent {
     // Use `requiredTrue` so only `true` (checked) is valid. Error key is still `required`.
     terms: new FormControl(false, { nonNullable: true, validators: [Validators.requiredTrue] }),
   });
+
+  get passwordGroup() {
+    return this.signupForm.controls.passwords as FormGroup;
+  }
 
   onSubmit() {
     console.log("Valid: ", this.signupForm.valid,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { mustContainQuestionMark } from '../../0common/validators-reactive/must-contain-question-mark.validator';
 import { mustMatch } from '../../0common/validators-reactive/must-match.validator';
 import { emailIsUnique } from '../../0common/validators-reactive/email-is-unique.validator';
@@ -61,6 +61,12 @@ export class SignupComponent {
       nonNullable: true,
       validators: [Validators.required]
     }),
+    //how dis you find us
+    source: new FormArray([
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false)
+    ]),
     // Checkboxes are `false` when unchecked; `Validators.required` does not treat false as empty.
     // Use `requiredTrue` so only `true` (checked) is valid. Error key is still `required`.
     terms: new FormControl(false, { nonNullable: true, validators: [Validators.requiredTrue] }),
@@ -83,6 +89,8 @@ export class SignupComponent {
       " Dirty: ", this.signupForm.dirty,
       " Value: ", this.signupForm.value);
 
+    console.log('Sign up form');
+    console.log(this.signupForm.value);
     if (this.signupForm.invalid) {
       this.signupForm.markAllAsTouched();
       return;

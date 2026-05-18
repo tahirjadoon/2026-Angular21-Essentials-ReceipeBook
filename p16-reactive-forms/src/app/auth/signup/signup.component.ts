@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { mustContainQuestionMark } from '../../0common/validators-reactive/must-contain-question-mark.validator';
 import { mustMatch } from '../../0common/validators-reactive/must-match.validator';
@@ -14,6 +15,15 @@ import { canadianAddress } from '../../0common/validators-reactive/can-address.v
   imports: [ReactiveFormsModule],
 })
 export class SignupComponent {
+
+  private readonly destroyRef = inject(DestroyRef);
+
+  /** Matches "How did you find us?" options in the template. */
+  readonly sourceChoices = [
+    { id: 'google', value: 'google', label: 'Google' },
+    { id: 'friend', value: 'friend', label: 'Referred by friend' },
+    { id: 'other', value: 'other', label: 'Other' },
+  ] as const;
 
   signupForm = new FormGroup({
     email: new FormControl('', {
@@ -61,12 +71,18 @@ export class SignupComponent {
       nonNullable: true,
       validators: [Validators.required]
     }),
-    //how dis you find us
-    source: new FormArray([
-      new FormControl(false),
-      new FormControl(false),
-      new FormControl(false)
-    ]),
+    // How did you find us — built from `sourceChoices` (Google checked by default).
+    source: new FormArray(
+      this.sourceChoices.map((choice) =>
+        new FormControl(choice.value === 'google', { nonNullable: true }),
+      ),
+    ),
+    sourceOtherText: new FormControl('', { nonNullable: true }),
+    // source: new FormArray([
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //   new FormControl(false),
+    // ]),
     // Checkboxes are `false` when unchecked; `Validators.required` does not treat false as empty.
     // Use `requiredTrue` so only `true` (checked) is valid. Error key is still `required`.
     terms: new FormControl(false, { nonNullable: true, validators: [Validators.requiredTrue] }),
@@ -79,7 +95,42 @@ export class SignupComponent {
   get addressGroup() {
     return this.signupForm.controls.address as FormGroup;
   }
-  
+
+  get sourceArray() {
+    return this.signupForm.controls.source as FormArray<FormControl<boolean>>;
+  }
+
+  get sourceOtherTextCtrl() {
+    return this.signupForm.controls.sourceOtherText;
+  }
+
+  get otherSourceIndex(): number {
+    return this.sourceChoices.findIndex((c) => c.value === 'other');
+  }
+
+  get isOtherSourceChecked(): boolean {
+    const idx = this.otherSourceIndex;
+    return idx >= 0 && this.sourceArray.at(idx).value;
+  }
+
+  constructor() {
+    const otherCheckbox = this.sourceArray.at(this.otherSourceIndex);
+    otherCheckbox.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((checked) => this.setSourceOtherTextValidators(checked));
+  }
+
+  private setSourceOtherTextValidators(required: boolean): void {
+    const ctrl = this.sourceOtherTextCtrl;
+    if (required) {
+      ctrl.setValidators([Validators.required]);
+    } else {
+      ctrl.clearValidators();
+      ctrl.setValue('');
+    }
+    ctrl.updateValueAndValidity();
+  }
+
   onSubmit() {
     console.log("Valid: ", this.signupForm.valid,
       " Invalid: ", this.signupForm.invalid,
@@ -97,5 +148,6 @@ export class SignupComponent {
     }
 
     this.signupForm.reset();
+    this.setSourceOtherTextValidators(false);
   }
 }

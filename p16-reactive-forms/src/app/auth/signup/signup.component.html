@@ -198,23 +198,39 @@
     </div>
   </div>
 
-  <fieldset formArrayName="source">
+  <fieldset>
     <legend>How did you find us?</legend>
-    <div class="control">
-      <input type="checkbox" id="google" name="acquisition" value="google" formControlName="0" />
-      <label for="google">Google</label>
+    <div formArrayName="source">
+    @for (choice of sourceChoices; track choice.id; let i = $index) {
+      <div class="control">
+        <input
+          type="checkbox"
+          [id]="choice.id"
+          name="acquisition"
+          [value]="choice.value"
+          [formControlName]="i"
+        />
+        <label [for]="choice.id">{{ choice.label }}</label>
+      </div>
+    }
     </div>
-
-    <div class="control">
-      <input type="checkbox" id="friend" name="acquisition" value="friend" formControlName="1" />
-      <label for="friend">Referred by friend</label>
-    </div>
-
-    <div class="control">
-      <input type="checkbox" id="other" name="acquisition" value="other" formControlName="2" />
-      <label for="other">Other</label>
-    </div>
+    @if (isOtherSourceChecked) {
+      <div class="control">
+        <label for="source-other-text">Please specify</label>
+        <input id="source-other-text" type="text" formControlName="sourceOtherText" />
+        <ng-container>
+        @if (sourceOtherTextCtrl.invalid && sourceOtherTextCtrl.touched && sourceOtherTextCtrl.dirty) {
+          <div>
+            @if (sourceOtherTextCtrl.errors?.['required']) {
+            <div class="control-error">Please specify how you found us</div>
+            }
+          </div>
+        }
+        </ng-container>
+      </div>
+    }
   </fieldset>
+  
 
   <div class="control-row">
     <div class="control control-terms">

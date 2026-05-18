@@ -121,6 +121,7 @@ export class SignupComponent {
   }
 
   fillDefaults(): void {
+    this.signupForm.reset();
     this.signupForm.patchValue({
       email: 'demo.user@example.org',
       passwords: {

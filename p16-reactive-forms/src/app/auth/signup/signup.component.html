@@ -251,7 +251,8 @@
   </div>
 
   <p class="form-actions">
-    <button type="reset" class="button button-flat" (click)="signupForm.reset()">Reset</button>
+    <button type="button" class="button button-flat" (click)="fillDefaults()">Fill Defaults</button>
+    <button type="reset" class="button button-flat" (click)="signupForm.reset(); setSourceOtherTextValidators(false)">Reset</button>
     <button type="submit" class="button" [disabled]="signupForm.invalid || signupForm.pending">Sign up</button>
   </p>
 </form>

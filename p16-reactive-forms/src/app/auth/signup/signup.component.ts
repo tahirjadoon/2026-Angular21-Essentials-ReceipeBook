@@ -120,7 +120,32 @@ export class SignupComponent {
       .subscribe((checked) => this.setSourceOtherTextValidators(checked));
   }
 
-  private setSourceOtherTextValidators(required: boolean): void {
+  fillDefaults(): void {
+    this.signupForm.patchValue({
+      email: 'demo.user@example.org',
+      passwords: {
+        password: 'pass12?',
+        confirmPassword: 'pass12?',
+      },
+      firstName: 'Jane',
+      lastName: 'Doe',
+      address: {
+        street: 'Main Street',
+        number: '42',
+        postalCode: 'K1A 0B1',
+        city: 'Ottawa',
+      },
+      role: 'student',
+      source: this.sourceChoices.map((choice) => choice.value === 'google'),
+      sourceOtherText: '',
+      terms: true,
+    });
+    this.setSourceOtherTextValidators(false);
+    this.signupForm.markAllAsDirty();
+    this.signupForm.updateValueAndValidity();
+  }
+
+  setSourceOtherTextValidators(required: boolean): void {
     const ctrl = this.sourceOtherTextCtrl;
     if (required) {
       ctrl.setValidators([Validators.required]);

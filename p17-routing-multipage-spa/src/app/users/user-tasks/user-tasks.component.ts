@@ -1,13 +1,14 @@
 import { Component, computed, DestroyRef, inject, input, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { UserDataService } from '../../_data/services/user-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import { UtilityService } from '../../_common/services/util.service';
 
 @Component({
   selector: 'app-user-tasks',
   templateUrl: './user-tasks.component.html',
   styleUrl: './user-tasks.component.css',
+  imports: [RouterOutlet, RouterLinkWithHref],
 })
 export class UserTasksComponent implements OnInit {
   private userDataService = inject(UserDataService);

@@ -1,0 +1,258 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <h2>Welcome on board!</h2>
+  <p>We just need a little bit of data from you to get you started 🚀</p>
+
+  <div class="control">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" autocomplete="email" />
+    <ng-container>
+    @if(signupForm.controls.email.invalid && signupForm.controls.email.touched && signupForm.controls.email.dirty) {
+      <div>
+        @if (signupForm.controls.email.errors?.['required']) {
+        <div class="control-error">Email is required.</div>
+        }
+        @if (signupForm.controls.email.errors?.['email']) {
+        <div class="control-error">Please enter a valid email address.</div>
+        }
+        @if (signupForm.controls.email.errors?.['emailIsUnique']) {
+        <div class="control-error">This email is already in use. Please choose another address.</div>
+        }
+      </div>
+    }
+    </ng-container>
+  </div>
+
+  <div class="control-row" formGroupName="passwords">
+    <div class="control">
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" autocomplete="new-password" />
+      <ng-container>
+      @if(passwordGroup.controls['password'].invalid && passwordGroup.controls['password'].touched && passwordGroup.controls['password'].dirty) {
+        <div>
+          @if (passwordGroup.controls['password'].errors?.['required']) {
+          <div class="control-error">Password is required.</div>
+          }
+          @if (passwordGroup.controls['password'].errors?.['minlength']) {
+          <div class="control-error">Password must be at least {{ passwordGroup.controls['password'].errors?.['minlength'].requiredLength }} characters.</div>
+          }
+          @if (passwordGroup.controls['password'].errors?.['pattern']) {
+          <div class="control-error">Password can contain only letters, numbers, and question marks.</div>
+          }
+          @if (passwordGroup.controls['password'].errors?.['mustContainQuestionMark']) {
+          <div class="control-error">Password must include a question mark (?).</div>
+          }
+        </div>
+      }
+      </ng-container>
+    </div>
+
+    <div class="control">
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" type="password" formControlName="confirmPassword" autocomplete="new-password" />
+      <ng-container>
+      @if(passwordGroup.controls['confirmPassword'].invalid && passwordGroup.controls['confirmPassword'].touched && passwordGroup.controls['confirmPassword'].dirty) {
+        <div>
+          @if (passwordGroup.controls['confirmPassword'].errors?.['required']) {
+          <div class="control-error">Please confirm your password.</div>
+          }
+          @if (passwordGroup.controls['confirmPassword'].errors?.['mustMatch']) {
+          <div class="control-error">Password and confirm password must match</div>
+          }
+        </div>
+      }
+      </ng-container>
+    </div>
+  </div>
+
+  <hr />
+
+  <div>
+    <div class="control-row">
+      <div class="control">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first-name" formControlName="firstName" />
+        <ng-container>
+        @if(signupForm.controls.firstName.invalid && signupForm.controls.firstName.touched && signupForm.controls.firstName.dirty) {
+          <div>
+            @if (signupForm.controls.firstName.errors?.['required']) {
+            <div class="control-error">First name is required</div>
+            }
+          </div>
+        }
+        </ng-container>
+      </div>
+
+      <div class="control">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last-name" formControlName="lastName" />
+        <ng-container>
+        @if(signupForm.controls.lastName.invalid && signupForm.controls.lastName.touched && signupForm.controls.lastName.dirty) {
+          <div>
+            @if (signupForm.controls.lastName.errors?.['required']) {
+            <div class="control-error">Last name is required</div>
+            }
+          </div>
+        }
+        </ng-container>
+      </div>
+    </div>
+
+    <fieldset formGroupName="address">
+      <legend>Your Address</legend>
+
+      <div class="control-row">
+        <div class="control">
+          <label for="street">Street</label>
+          <input type="text" id="street" name="street" formControlName="street" />
+          <ng-container>
+          @if(addressGroup.controls['street'].invalid && addressGroup.controls['street'].touched && addressGroup.controls['street'].dirty) {
+            <div>
+              @if (addressGroup.controls['street'].errors?.['required']) {
+              <div class="control-error">Street is required</div>
+              }
+              @if (addressGroup.controls['street'].errors?.['canadianAddress']) {
+              <div class="control-error">Street name is invalid</div>
+              }
+            </div>
+          }
+          </ng-container>
+        </div>
+
+        <div class="control">
+          <label for="number">Number</label>
+          <input type="text" id="number" name="number" formControlName="number" />
+          <ng-container>
+          @if(addressGroup.controls['number'].invalid && addressGroup.controls['number'].touched && addressGroup.controls['number'].dirty) {
+            <div>
+              @if (addressGroup.controls['number'].errors?.['required']) {
+              <div class="control-error">Number is required</div>
+              }
+              @if (addressGroup.controls['number'].errors?.['positiveNumber']) {
+              <div class="control-error">Number must be a positive integer</div>
+              }
+            </div>
+          }
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="control-row">
+        <div class="control">
+          <label for="postal-code">Postal Code</label>
+          <input type="text" id="postal-code" name="postal-code" formControlName="postalCode" />
+          <ng-container>
+          @if(addressGroup.controls['postalCode'].invalid && addressGroup.controls['postalCode'].touched && addressGroup.controls['postalCode'].dirty) {
+            <div>
+              @if (addressGroup.controls['postalCode'].errors?.['required']) {
+              <div class="control-error">Postal code is required</div>
+              }
+              @if (addressGroup.controls['postalCode'].errors?.['postalCode']) {
+              <div class="control-error">Invalid postal code</div>
+              }
+            </div>
+          }
+          </ng-container>
+        </div>
+
+        <div class="control">
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" formControlName="city" />
+          <ng-container>
+          @if(addressGroup.controls['city'].invalid && addressGroup.controls['city'].touched && addressGroup.controls['city'].dirty) {
+            <div>
+              @if (addressGroup.controls['city'].errors?.['required']) {
+              <div class="control-error">City is required</div>
+              }
+              @if (addressGroup.controls['city'].errors?.['canadianAddress']) {
+              <div class="control-error">Invalid city name</div>
+              }
+            </div>
+          }
+          </ng-container>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <hr />
+
+  <div class="control-row">
+    <div class="control">
+      <label for="role">What best describes your role?</label>
+      <select id="role" name="role" formControlName="role">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="employee">Employee</option>
+        <option value="founder">Founder</option>
+        <option value="other">Other</option>
+      </select>
+      <ng-container>
+      @if(signupForm.controls.role.invalid && signupForm.controls.role.touched && signupForm.controls.role.dirty) {
+        <div>
+          @if (signupForm.controls.role.errors?.['required']) {
+          <div class="control-error">Role is required</div>
+          }
+        </div>
+      }
+      </ng-container>
+    </div>
+  </div>
+
+  <fieldset>
+    <legend>How did you find us?</legend>
+    <div formArrayName="source">
+    @for (choice of sourceChoices; track choice.id; let i = $index) {
+      <div class="control">
+        <input
+          type="checkbox"
+          [id]="choice.id"
+          name="acquisition"
+          [value]="choice.value"
+          [formControlName]="i"
+        />
+        <label [for]="choice.id">{{ choice.label }}</label>
+      </div>
+    }
+    </div>
+    @if (isOtherSourceChecked) {
+      <div class="control">
+        <label for="source-other-text">Please specify</label>
+        <input id="source-other-text" type="text" formControlName="sourceOtherText" />
+        <ng-container>
+        @if (sourceOtherTextCtrl.invalid && sourceOtherTextCtrl.touched && sourceOtherTextCtrl.dirty) {
+          <div>
+            @if (sourceOtherTextCtrl.errors?.['required']) {
+            <div class="control-error">Please specify how you found us</div>
+            }
+          </div>
+        }
+        </ng-container>
+      </div>
+    }
+  </fieldset>
+  
+
+  <div class="control-row">
+    <div class="control control-terms">
+      <label for="terms-and-conditions">
+        <input type="checkbox" id="terms-and-conditions" name="terms" formControlName="terms" />
+        I agree to the terms and conditions
+      </label>
+      <ng-container>
+      @if(signupForm.controls.terms.invalid && signupForm.controls.terms.touched) {
+        <div>
+          @if (signupForm.controls.terms.errors?.['required']) {
+          <div class="control-error">You must agree to the terms and conditions</div>
+          }
+        </div>
+      }
+      </ng-container>
+    </div>
+  </div>
+
+  <p class="form-actions">
+    <button type="button" class="button button-flat" (click)="fillDefaults()">Fill Defaults</button>
+    <button type="reset" class="button button-flat" (click)="signupForm.reset(); setSourceOtherTextValidators(false)">Reset</button>
+    <button type="submit" class="button" [disabled]="signupForm.invalid || signupForm.pending">Sign up</button>
+  </p>
+</form>

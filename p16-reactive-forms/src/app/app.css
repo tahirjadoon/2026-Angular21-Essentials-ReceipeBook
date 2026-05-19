@@ -1,0 +1,42 @@
+.button-list {
+  list-style: none;
+  padding: 0;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.button-list li {
+  display: inline-block;
+}
+
+.button-list .button-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  background-color: #319890;
+  color: #d9e2f1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hover */
+.button-link:hover {
+  background-color: #147b73;
+}
+
+/* Active tab highlight */
+.button-list .button-link.active {
+  background-color: #147b73; /* same as hover */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+}
+
+/* Optional: active hover stays active */
+.button-list .button-link.active:hover {
+  background-color: #147b73;
+}

@@ -1,0 +1,17 @@
+<header>
+  <img src="logo.jpg" alt="A form and a pencil" />
+  <h1>Angular Forms</h1>
+</header>
+
+<ul class="button-list">
+  <li><a href="#" class="button-link" (click)="onTabClick('login')" [class.active]="selectedTab() === 'login'">Login</a></li>
+  <li><a href="#" class="button-link" (click)="onTabClick('signup')" [class.active]="selectedTab() === 'signup'">Signup</a></li>
+</ul>
+
+@if(selectedTab() === 'login') {
+  <app-login />
+}
+
+@if(selectedTab() === 'signup') {
+  <app-signup />
+}

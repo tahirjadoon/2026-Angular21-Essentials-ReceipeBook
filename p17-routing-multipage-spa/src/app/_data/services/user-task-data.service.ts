@@ -1,11 +1,9 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { DUMMY_TASKS } from '../repo/dummy-tasks';
-import { UserTaskData } from '../modals/user-task-data.mode';
-import { UserTaskCreateData } from '../modals/user-task-create.model';
-import { ToastMessageType } from '../../common/toast-custom/models/toast-message.model';
-import { ToastMessageService } from '../../common/toast-custom/services/toast-message.service';
-import { LocalStorageService } from '../../common/local-storage/local-storage.service';
-import { LocalStorageKey } from '../../common/local-storage/local-storage-enum';
+import { UserTaskCreateData, UserTaskData } from '../modals/user-task-data.mode';
+import { ToastMessageService } from '../../_common/toast-message/toast-message.service';
+import { LocalStorageService } from '../../_common/local-storage/local-storage.service';
+import { LocalStorageKey } from '../../_common/local-storage/local-storage-enum';
 
 @Injectable({
   providedIn: 'root',
@@ -57,13 +55,13 @@ export class UserTaskDataService {
 
     this._tasks.update(t => [newTask, ...t]);
     this.persist();
-    this.toastMessageService.show(ToastMessageType.Success, 'Task added successfully!');
+    this.toastMessageService.success('Task added successfully!');
   }
 
-  completeTask(taskId: string): void {
+  removeTask(taskId: string): void {
     this._tasks.update(t => t.filter(task => task.id !== taskId));
     this.persist();
-    this.toastMessageService.show(ToastMessageType.Success, 'Task completed successfully!');
+    this.toastMessageService.success('Task removed successfully!');
   }
 
   getTasksCountByUser(userId: string): number {

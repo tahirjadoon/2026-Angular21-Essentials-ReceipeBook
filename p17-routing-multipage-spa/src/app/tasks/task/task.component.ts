@@ -1,9 +1,9 @@
 import { Component, inject, input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
-import { type Task } from './task.model';
 import { UserTaskDataService } from '../../_data/services/user-task-data.service';
 import { CardComponent } from "../../_common/card.component/card.component";
+import { UserTaskData } from '../../_data/modals/user-task-data.mode';
 
 @Component({
   selector: 'app-task',
@@ -13,7 +13,7 @@ import { CardComponent } from "../../_common/card.component/card.component";
   imports: [DatePipe, CardComponent],
 })
 export class TaskComponent {
-  task = input.required<Task>();
+  task = input.required<UserTaskData>();
   private tasksService = inject(UserTaskDataService);
 
   onComplete() {

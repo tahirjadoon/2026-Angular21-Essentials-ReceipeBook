@@ -39,6 +39,7 @@ export class UserTaskDataService {
 
   // Filtering stays in the service
   getTasksByUser(userId: string): UserTaskData[] {
+    console.log('getTasksByUser ', userId);
     return this._tasks().filter(t => t.userId === userId);
   }
 

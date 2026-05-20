@@ -4,9 +4,12 @@ import { UserTasksComponent } from './users/user-tasks/user-tasks.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { NotFoundComponent } from './_common/not-found.component/not-found.coponent';
+import { redirectToFirstUserGuard } from './_common/guards/redirect-to-first-user.guard';
 
 export const routes: Routes = [
-  { path: '', component: NoTaskComponent }, //default route
+  {
+    path: '', canActivate: [redirectToFirstUserGuard], component: NoTaskComponent,
+  },
   { path: 'users/:userId/:userName', component: UserTasksComponent,
     children: [
       { path: '', redirectTo: 'tasks', pathMatch: 'full' }, //default child

@@ -2,5 +2,6 @@
   <a [routerLink]="['/users', user().id, slugify(user().name), 'tasks']" routerLinkActive="selected">
     <img [src]="imagePath()" [alt]="user().name" />
     <span>{{ user().name }}</span>
+    <span class="task-pill">{{ taskCount() }}</span>
   </a>
 </div>

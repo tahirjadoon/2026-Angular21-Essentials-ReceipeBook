@@ -32,6 +32,7 @@ export class TasksComponent implements OnInit {
   */
   //hhowever check app.config.ts, added withRouterConfig so now the userid will be available
   userId = input.required<string>();
+  userName = input.required<string>();
 
   //userTasks: UserTaskData[] = [];
   

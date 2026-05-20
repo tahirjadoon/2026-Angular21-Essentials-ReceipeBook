@@ -1,21 +1,16 @@
 import { Routes } from '@angular/router';
 import { NoTaskComponent } from './tasks/no-task/no-task.component';
 import { UserTasksComponent } from './users/user-tasks/user-tasks.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { NewTaskComponent } from './tasks/new-task/new-task.component';
 import { NotFoundComponent } from './_common/not-found.component/not-found.coponent';
 import { redirectToFirstUserGuard } from './_common/guards/redirect-to-first-user.guard';
+import { userRoutes } from './users/users.routes';
 
 export const routes: Routes = [
   {
     path: '', canActivate: [redirectToFirstUserGuard], component: NoTaskComponent,
   },
   { path: 'users/:userId/:userName', component: UserTasksComponent,
-    children: [
-      { path: '', redirectTo: 'tasks', pathMatch: 'full' }, //default child
-      { path: 'tasks', component: TasksComponent },
-      { path: 'tasks/new', component: NewTaskComponent }
-    ]
+    children: userRoutes, //user routes moved out to specific routes ts file
   },
   { path: '**', component: NotFoundComponent } //wildcard route
 ];

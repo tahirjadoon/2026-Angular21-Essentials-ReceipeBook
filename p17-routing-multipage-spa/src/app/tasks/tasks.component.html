@@ -1,7 +1,7 @@
 <ul>
   @for (task of userTasks(); track task.id) {
     <li>
-      <app-task [task]="task" />
+      <app-task [task]="task" [userId]="userId()" [userName]="userName()" />
     </li>
   } @empty {
     <p>There are no tasks yet. Start adding some!</p>

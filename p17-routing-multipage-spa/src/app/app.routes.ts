@@ -11,6 +11,9 @@ export const routes: Routes = [
   },
   { path: 'users/:userId/:userName', component: UserTasksComponent,
     children: userRoutes, //user routes moved out to specific routes ts file
+    data: {
+      messageInput: 'Hello!'
+    }
   },
   { path: '**', component: NotFoundComponent } //wildcard route
 ];

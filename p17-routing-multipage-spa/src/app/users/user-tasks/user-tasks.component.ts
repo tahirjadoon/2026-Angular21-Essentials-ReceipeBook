@@ -37,12 +37,19 @@ export class UserTasksComponent implements OnInit {
     return user;
   });
 
+  //data passed via route
+  messageInput = input.required<string>();
+
+  //2
+
   ngOnInit(): void {
+    console.log("message=", this.messageInput());
+    
     //2
     const paramSubscription = this.activatedRoute.paramMap.subscribe({
       next:paramMap => {
         const userName = paramMap.get('userName');
-        console.log(this.utilService.unslugify(userName ?? ''));
+        //console.log(this.utilService.unslugify(userName ?? ''));
       }
     });
     this.destroyRef.onDestroy(() => {

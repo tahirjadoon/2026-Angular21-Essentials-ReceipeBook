@@ -8,11 +8,11 @@ export const dummyCanMatch: CanMatchFn = (route, segments) => {
   //do something
   const shouldGetAccess = Math.random(); 
   //returns true/false/observable
-  if(shouldGetAccess < 0.5)
+  if(shouldGetAccess < 0.9)
     return true;
 
   const toastService = inject(ToastMessageService);
-  toastService.error(`Blocked points=${shouldGetAccess.toFixed(2)} < 0.5... Click/refresh again to try your luck!`);
+  toastService.error(`Blocked points=${shouldGetAccess.toFixed(2)} < 0.9... Click/refresh again to try your luck!`);
 
   return new RedirectCommand(router.parseUrl('/unauthorized'));
 

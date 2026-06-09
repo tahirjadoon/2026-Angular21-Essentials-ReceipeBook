@@ -24,18 +24,25 @@ export class UserTasksComponent implements OnInit {
 
   //2
   private activatedRoute = inject(ActivatedRoute);
-  
+
+  //getting the username via resolver now
+  userNameViaResolver = input.required<string>();
+
   //1
+  //now getting username via resolve
+  /*
   userData = computed(() => {
     const user = this.userDataService.getUserById(this.userId());
 
-    //update browser tab title
-    if(user){
-      this.browserTitle.setTitle(`p17 ${user.name} Tasks`);
-    }
+    ////getting via the resolver now
+    ////update browser tab title
+    //if(user){
+    //  this.browserTitle.setTitle(`p17 ${user.name} Tasks`);
+    //}
 
     return user;
   });
+  */
 
   //data passed via route
   messageInput = input.required<string>();
@@ -44,6 +51,9 @@ export class UserTasksComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("message=", this.messageInput());
+
+    //display title from the resolver user name 
+    this.browserTitle.setTitle(`p17r ${this.userNameViaResolver()} Tasks`);
     
     //2
     const paramSubscription = this.activatedRoute.paramMap.subscribe({

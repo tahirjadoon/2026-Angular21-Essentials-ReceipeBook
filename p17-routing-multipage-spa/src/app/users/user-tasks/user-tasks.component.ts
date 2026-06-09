@@ -62,8 +62,17 @@ export class UserTasksComponent implements OnInit {
         //console.log(this.utilService.unslugify(userName ?? ''));
       }
     });
+
+    //getting static data and dynamic data (resolvers) via activated routes
+    const dataSubscripton= this.activatedRoute.data.subscribe({
+      next: data => {
+        console.log("data via activated route: ", data);
+      }
+    });
+
     this.destroyRef.onDestroy(() => {
       paramSubscription.unsubscribe();
+      dataSubscripton.unsubscribe();
     });
   }
 

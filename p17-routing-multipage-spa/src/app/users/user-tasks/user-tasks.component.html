@@ -1,0 +1,11 @@
+<section id="tasks">
+  <header>
+    <!--<h2>{{ userData()?.name }} Tasks</h2>-->
+    <h2>{{ userNameViaResolver() }} Tasks</h2>
+    <menu>
+      <a [routerLink]="['tasks','new']">Add Task</a>
+    </menu>
+  </header>
+
+  <router-outlet />
+</section>

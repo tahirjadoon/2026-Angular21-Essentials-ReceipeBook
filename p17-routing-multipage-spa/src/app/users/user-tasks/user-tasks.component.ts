@@ -52,8 +52,9 @@ export class UserTasksComponent implements OnInit {
   ngOnInit(): void {
     console.log("message=", this.messageInput());
 
-    //display title from the resolver user name 
-    this.browserTitle.setTitle(`p17r ${this.userNameViaResolver()} Tasks`);
+    //setting the title via routes
+    ////display title from the resolver user name 
+    //this.browserTitle.setTitle(`p17r ${this.userNameViaResolver()} Tasks`);
     
     //2
     const paramSubscription = this.activatedRoute.paramMap.subscribe({

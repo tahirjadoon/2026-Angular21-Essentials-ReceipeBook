@@ -5,10 +5,11 @@ import { NotFoundComponent } from './_common/not-found.component/not-found.copon
 import { redirectToFirstUserGuard } from './_common/guards/redirect-to-first-user.guard';
 import { userRoutes } from './users/users.routes';
 import { resolveUserName } from './_common/resolvers/resolve-user-name.resolve';
+import { resolveTitle } from './_common/resolvers/resolve-title.resolve';
 
 export const routes: Routes = [
   {
-    path: '', canActivate: [redirectToFirstUserGuard], component: NoTaskComponent,
+    path: '', canActivate: [redirectToFirstUserGuard], component: NoTaskComponent, title: 'No task selected',
   },
   { path: 'users/:userId/:userName', component: UserTasksComponent,
     children: userRoutes, //user routes moved out to specific routes ts file
@@ -17,7 +18,8 @@ export const routes: Routes = [
     },
     resolve: {
       userNameViaResolver: resolveUserName
-    }
+    },
+    title: resolveTitle,
   },
   { path: '**', component: NotFoundComponent } //wildcard route
 ];

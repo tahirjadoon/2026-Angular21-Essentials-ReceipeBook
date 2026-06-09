@@ -6,6 +6,7 @@ import { redirectToFirstUserGuard } from './_common/guards/redirect-to-first-use
 import { userRoutes } from './users/users.routes';
 import { resolveUserName } from './_common/resolvers/resolve-user-name.resolve';
 import { resolveTitle } from './_common/resolvers/resolve-title.resolve';
+import { dummyCanMatch } from './_common/guards/dummy-can-match.guard';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,7 @@ export const routes: Routes = [
   },
   { path: 'users/:userId/:userName', component: UserTasksComponent,
     children: userRoutes, //user routes moved out to specific routes ts file
+    canMatch: [dummyCanMatch],
     data: {
       messageInput: 'Hello!'
     },
